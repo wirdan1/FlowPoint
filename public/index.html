@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="FlowPoint Apis - Koleksi API gratis untuk kebutuhan pengembangan aplikasi Anda">
+    <meta name="keywords" content="API, Rest API, FlowPoint, Developer Tools, Free API">
+    <meta name="author" content="Hookrest Team">
+
+   <link rel="icon" href="https://i.pinimg.com/236x/4d/01/91/4d0191ec96622626c52b9691c74d677e.jpg">
+   <meta property="og:image" content="https://i.pinimg.com/236x/4d/01/91/4d0191ec96622626c52b9691c74d677e.jpg">
+   <meta property="og:url" content="https://www.apis-hookrest.zone.id">
+   <meta property="og:type" content="website">
+  
+    <meta property="og:title" content="FlowPoint Apis">
+    <meta property="og:description" content="Koleksi API gratis">
+    <meta property="og:type" content="website">
+    <title>FlowPoint Apis | API Gratis</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+:root {
+    /* Dark mode as default */
+    --bg-primary: #121212;
+    --bg-secondary: #1e1e1e;
+    --bg-card: #252525;
+    --bg-card-hover: #2d2d2d;
+    --text-primary: #f5f5f5;
+    --text-secondary: #a0a0a0;
+    --accent-primary: #7c4dff;
+    --accent-secondary: #b388ff;
+    --accent-gradient: linear-gradient(135deg, #7c4dff, #b388ff);
+    --border-color: #333333;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --success: #4caf50;
+    --warning: #ff9800;
+    --error: #f44336;
+    --info: #2196f3;
+}
+
+[data-theme="light"] {
+    --bg-primary: #f5f5f5;
+    --bg-secondary: #ffffff;
+    --bg-card: #ffffff;
+    --bg-card-hover: #f9f9f9;
+    --text-primary: #212121;
+    --text-secondary: #616161;
+    --accent-primary: #7c4dff;
+    --accent-secondary: #b388ff;
+    --accent-gradient: linear-gradient(135deg, #7c4dff, #b388ff);
+    --border-color: #e0e0e0;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    width: 100%;
+}
+
+/* Header Styles */
+header {
+    padding: 40px 0;
+    margin-bottom: 40px;
+    position: relative;
+    background-color: var(--bg-secondary);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--accent-gradient);
+    opacity: 0.05;
+    z-index: 0;
+}
+
+.header-content {
+    position: relative;
+    z-index: 1;
+    padding: 0 30px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+}
+
+.status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    background-color: var(--success);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.status i {
+    font-size: 0.75rem;
+}
+
+.description {
+    max-width: 800px;
+    margin-bottom: 20px;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--bg-card);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text-primary);
+    box-shadow: 0 4px 6px var(--shadow-color);
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px var(--shadow-color);
+}
+
+/* Search Bar */
+.search-container {
+    margin: 20px auto 40px;
+    max-width: 600px;
+    position: relative;
+    width: 100%;
+}
+
+.search-input {
+    width: 100%;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    box-shadow: 0 4px 6px var(--shadow-color);
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    box-shadow: 0 6px 12px var(--shadow-color), 0 0 0 2px var(--accent-primary);
+}
+
+.search-input::placeholder {
+    color: var(--text-secondary);
+}
+
+/* Category Styles */
+.category {
+    margin-bottom: 50px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.category.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.category-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border-color);
+    color: var(--text-primary);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.category-title::before {
+    content: "";
+    display: inline-block;
+    width: 4px;
+    height: 20px;
+    background: var(--accent-gradient);
+    border-radius: 2px;
+}
+
+.api-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 20px;
+}
+
+/* API Card Styles */
+.api-card {
+    background-color: var(--bg-card);
+    border-radius: 12px;
+    padding: 25px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 6px var(--shadow-color);
+}
+
+.api-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px var(--shadow-color);
+    background-color: var(--bg-card-hover);
+}
+
+.api-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--accent-gradient);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.api-card:hover::before {
+    opacity: 1;
+}
+
+.api-name {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    font-weight: 600;
+}
+
+.api-desc {
+    margin-bottom: 15px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    word-wrap: break-word;
+    font-size: 0.95rem;
+}
+
+.api-path-container {
+    position: relative;
+    margin-bottom: 15px;
+    background-color: var(--bg-primary);
+    border-radius: 6px;
+    padding: 5px;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-primary) var(--bg-primary);
+    -webkit-overflow-scrolling: touch;
+}
+
+.api-path-container::-webkit-scrollbar {
+    height: 6px;
+}
+
+.api-path-container::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+    border-radius: 3px;
+}
+
+.api-path-container::-webkit-scrollbar-thumb {
+    background-color: var(--accent-primary);
+    border-radius: 3px;
+}
+
+.api-path {
+    background-color: var(--bg-primary);
+    padding: 8px 35px 8px 12px;
+    border-radius: 6px;
+    font-family: 'Fira Code', 'Courier New', Courier, monospace;
+    display: inline-block;
+    white-space: nowrap;
+    min-width: 100%;
+    box-sizing: border-box;
+    font-size: 0.85rem;
+    color: var(--accent-secondary);
+}
+
+.copy-path-btn {
+    position: sticky;
+    right: 5px;
+    top: 5px;
+    float: right;
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 3px 8px;
+    font-weight: bold;
+    margin-left: 10px;
+    z-index: 1;
+    transition: color 0.2s ease;
+}
+
+.copy-path-btn:hover {
+    color: var(--accent-primary);
+}
+
+/* Status Badges */
+.api-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.status-ready {
+    background-color: rgba(76, 175, 80, 0.15);
+    color: #4CAF50;
+}
+
+.status-update {
+    background-color: rgba(255, 193, 7, 0.15);
+    color: #FFC107;
+}
+
+.status-offline {
+    background-color: rgba(244, 67, 54, 0.15);
+    color: #F44336;
+}
+
+.status-error {
+    background-color: rgba(244, 67, 54, 0.15);
+    color: #F44336;
+}
+
+.status-maintenance {
+    background-color: rgba(255, 152, 0, 0.15);
+    color: #FF9800;
+}
+
+.api-key-badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    background-color: rgba(124, 77, 255, 0.15);
+    color: var(--accent-primary);
+    font-weight: 500;
+}
+
+.api-key-badge.public {
+    background-color: rgba(76, 175, 80, 0.15);
+    color: #4CAF50;
+}
+
+.param-title {
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.param-list {
+    margin-bottom: 15px;
+    border-left: 2px solid var(--accent-primary);
+    padding-left: 12px;
+}
+
+.param-item {
+    margin-bottom: 6px;
+    font-size: 0.85rem;
+    word-break: break-word;
+    color: var(--text-secondary);
+}
+
+.param-name {
+    font-family: 'Fira Code', 'Courier New', Courier, monospace;
+    color: var(--accent-secondary);
+    font-weight: 500;
+}
+
+/* Buttons */
+.try-btn {
+    background: var(--accent-gradient);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 500;
+    width: 100%;
+    margin-top: auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.try-btn:hover:not(.disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.try-btn.disabled {
+    background: #424242;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.try-container {
+    margin-top: 20px;
+    display: none;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: var(--bg-secondary);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px 12px;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 2px rgba(124, 77, 255, 0.2);
+}
+
+.execute-btn {
+    background: var(--accent-gradient);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-right: 10px;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.execute-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Popup Styles */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+.popup-content {
+    background-color: var(--bg-secondary);
+    padding: 25px;
+    border-radius: 12px;
+    max-width: 90%;
+    width: 800px;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.popup-title {
+    font-size: 1.3rem;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.close-popup {
+    background: transparent;
+    color: var(--text-secondary);
+    border: none;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 50%;
+    transition: all 0.2s;
+}
+
+.close-popup:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+}
+
+.popup-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    background-color: var(--bg-primary);
+}
+
+.result-content {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: 'Fira Code', 'Courier New', Courier, monospace;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--text-primary);
+}
+
+.popup-footer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.copy-btn {
+    background: var(--accent-gradient);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s;
+}
+
+.copy-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    border-top-color: var(--accent-primary);
+    animation: spin 1s ease-in-out infinite;
+    margin-right: 10px;
+}
+
+.error-message {
+    color: var(--text-primary);
+    padding: 15px;
+    background-color: rgba(244, 67, 54, 0.1);
+    border-radius: 8px;
+    margin-top: 10px;
+    border-left: 3px solid #F44336;
+}
+
+.status-notification {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    padding: 12px 20px;
+    border-radius: 8px;
+    z-index: 1001;
+    font-weight: 500;
+    text-align: center;
+    display: none;
+    max-width: 90%;
+    animation: bounceIn 0.5s;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes bounceIn {
+    0% { transform: translateX(-50%) scale(0.5); opacity: 0; }
+    70% { transform: translateX(-50%) scale(1.1); }
+    100% { transform: translateX(-50%) scale(1); opacity: 1; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 40px 0;
+    margin-top: 60px;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+footer p {
+    margin-bottom: 5px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .api-grid {
+        grid-template-columns: 1fr;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    .theme-toggle {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+
+    .header-content {
+        padding: 0 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .execute-btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    .api-path {
+        padding-right: 30px;
+    }
+    
+    .popup-content {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .header-content {
+        padding: 0 10px;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <h1 id="api-name">FlowPoint Apis</h1>
+                <div class="status" id="api-status">
+                    <i class="fas fa-circle"></i>
+                    <span>Online</span>
+                </div>
+                <p class="description" id="api-description">Simple Rest Api.</p>
+            </div>
+        </header>
+        
+        <div class="search-container">
+            <input type="text" class="search-input" id="searchInput" placeholder="Search APIs by name or description...">
+        </div>
+        
+        <div id="categories-container"></div>
+        
+        <footer>
+            <p>Created with ❤️ by <span id="api-creator">FlowPoint Apis</span></p>
+            <p>Version <span id="api-version">v1.0</span></p>
+        </footer>
+    </div>
+
+    <div class="popup" id="apiPopup">
+        <div class="popup-content">
+            <div class="popup-header">
+                <h2 class="popup-title" id="popupTitle">API Result</h2>
+                <button class="close-popup" id="closePopup">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="popup-body" id="popupBody"></div>
+            <div class="popup-footer">
+                <button class="copy-btn" id="copyResultBtn">
+                    <i class="fas fa-copy"></i> Copy
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="status-notification" id="statusNotification"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('themeToggle');
+            const currentTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            
+            themeToggleUpdate();
+            
+            const apiPopup = document.getElementById('apiPopup');
+            const closePopup = document.getElementById('closePopup');
+            const popupBody = document.getElementById('popupBody');
+            const popupTitle = document.getElementById('popupTitle');
+            const copyResultBtn = document.getElementById('copyResultBtn');
+            const statusNotification = document.getElementById('statusNotification');
+            const comicBannerContainer = document.getElementById('comic-banner-container');
+            
+            closePopup.addEventListener('click', function() {
+                apiPopup.style.display = 'none';
+            });
+            
+            window.addEventListener('click', function(e) {
+                if (e.target === apiPopup) {
+                    apiPopup.style.display = 'none';
+                }
+            });
+            
+            const searchInput = document.getElementById('searchInput');
+            searchInput.addEventListener('input', debounce(handleSearch, 300));
+            
+            loadApiData();
+            
+            function createComicBanner(bannerImage) {
+                if (!bannerImage) return;
+                
+                const bannerHTML = `
+                    <img src="${bannerImage}" alt="Banner FlowPoint Apis" loading="lazy">
+                    <div class="banner-caption">Selamat Menggunakan -/o/-</div>
+                    <div class="speech-bubble" style="top: 20px; right: 20px;">
+                        Coba API gratis sekarang!
+                    </div>
+                    <div class="speech-bubble" style="bottom: 40px; left: 20px; animation-delay: 0.5s;">
+                        Keren banget!
+                    </div>
+                `;
+                
+                comicBannerContainer.innerHTML = bannerHTML;
+            }
+            
+function createTryContainer(apiCard, item) {
+    const tryContainer = document.createElement('div');
+    tryContainer.className = 'try-container';
+    
+    if (item.requireKey) {
+        const keyGroup = document.createElement('div');
+        keyGroup.className = 'input-group';
+        
+        const keyLabel = document.createElement('label');
+        keyLabel.textContent = 'API Key';
+        keyLabel.innerHTML += ' <span style="color: var(--accent-secondary)">*required</span>';
+        
+        const keyInput = document.createElement('input');
+        keyInput.type = 'text';
+        keyInput.placeholder = 'Enter your API key';
+        keyInput.id = `api-key-${item.name.replace(/\s+/g, '-').toLowerCase()}`;
+        keyInput.required = true;
+        
+        keyGroup.append(keyLabel, keyInput);
+        tryContainer.appendChild(keyGroup);
+    }
+    
+    if (item.params) {
+        Object.keys(item.params).forEach(param => {
+            const inputGroup = document.createElement('div');
+            inputGroup.className = 'input-group';
+            
+            const label = document.createElement('label');
+            label.textContent = param;
+            
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.placeholder = item.params[param];
+            input.id = `param-${param}-${item.name.replace(/\s+/g, '-').toLowerCase()}`;
+            
+            inputGroup.append(label, input);
+            tryContainer.appendChild(inputGroup);
+        });
+    }
+    
+    const buttonGroup = document.createElement('div');
+    buttonGroup.style.marginTop = '15px';
+    
+    const executeBtn = document.createElement('button');
+    executeBtn.className = 'execute-btn';
+    executeBtn.innerHTML = '<i class="fas fa-play"></i> Execute';
+    executeBtn.addEventListener('click', function() {
+        executeApi(item);
+    });
+    
+    buttonGroup.appendChild(executeBtn);
+    tryContainer.appendChild(buttonGroup);
+    
+    apiCard.appendChild(tryContainer);
+    return tryContainer;
+}
+
+function showStatusNotification(message) {
+    statusNotification.textContent = message;
+    statusNotification.style.display = 'block';
+    
+    setTimeout(function() {
+        statusNotification.style.display = 'none';
+    }, 3000);
+}
+
+function themeToggleUpdate() {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    themeToggle.innerHTML = currentTheme === 'dark' 
+        ? '<i class="fas fa-sun"></i>' 
+        : '<i class="fas fa-moon"></i>';
+}
+            
+            function handleSearch() {
+                const searchTerm = searchInput.value.toLowerCase();
+                const apiCards = document.querySelectorAll('.api-card');
+                
+                if (!searchTerm) {
+                    apiCards.forEach(card => {
+                        card.style.display = 'block';
+                        const category = card.closest('.category');
+                        if (category) {
+                            category.style.display = 'block';
+                        }
+                    });
+                    return;
+                }
+                
+                apiCards.forEach(card => {
+                    const name = card.dataset.apiName;
+                    const desc = card.dataset.apiDesc;
+                    const matches = name.includes(searchTerm) || desc.includes(searchTerm);
+                    card.style.display = matches ? 'block' : 'none';
+                    
+                    const category = card.closest('.category');
+                    if (category) {
+                        const hasVisibleCards = Array.from(category.querySelectorAll('.api-card'))
+                            .some(c => c.style.display !== 'none');
+                        category.style.display = hasVisibleCards ? 'block' : 'none';
+                    }
+                });
+            }
+            
+            function debounce(func, wait) {
+                let timeout;
+                return function() {
+                    const context = this, args = arguments;
+                    clearTimeout(timeout);
+                    timeout = setTimeout(function() {
+                        func.apply(context, args);
+                    }, wait);
+                };
+            }
+            
+            function checkVisibility() {
+                const categories = document.querySelectorAll('.category');
+                categories.forEach(category => {
+                    const rect = category.getBoundingClientRect();
+                    if (rect.top < window.innerHeight - 100) {
+                        category.classList.add('visible');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', checkVisibility);
+            checkVisibility();
+            
+            async function loadApiData() {
+                try {
+                    const response = await fetch('/src/web-set.json');
+                    if (!response.ok) {
+                        throw new Error('Gagal memuat data: ' + response.status);
+                    }
+                    const data = await response.json();
+                    
+                    document.getElementById('api-name').textContent = data.name;
+                    document.getElementById('api-status').textContent = data.header.status;
+                    document.getElementById('api-description').textContent = data.description;
+                    document.getElementById('api-creator').textContent = data.apiSettings.creator;
+                    document.getElementById('api-version').textContent = data.version;
+                    
+                    if (data.bannerImage) {
+                        createComicBanner(data.bannerImage);
+                    }
+                    
+                    const categoriesContainer = document.getElementById('categories-container');
+                    categoriesContainer.innerHTML = '';
+                    
+                    data.categories.forEach(category => {
+                        const categoryElement = document.createElement('div');
+                        categoryElement.className = 'category';
+                        categoryElement.dataset.category = category.name.toLowerCase();
+                        
+                        const categoryTitle = document.createElement('h2');
+                        categoryTitle.className = 'category-title';
+                        categoryTitle.textContent = category.name;
+                        
+                        const apiGrid = document.createElement('div');
+                        apiGrid.className = 'api-grid';
+                        
+                        category.items.forEach(item => {
+                            const apiCard = document.createElement('div');
+                            apiCard.className = 'api-card';
+                            apiCard.dataset.apiName = item.name.toLowerCase();
+                            apiCard.dataset.apiDesc = item.desc.toLowerCase();
+                            
+                            const apiName = document.createElement('h3');
+                            apiName.className = 'api-name';
+                            apiName.textContent = item.name;
+                            
+                            const apiKeyBadge = document.createElement('span');
+                            apiKeyBadge.className = `api-key-badge ${item.requireKey ? '' : 'public'}`;
+                            apiKeyBadge.textContent = item.requireKey ? 'Butuh Key' : 'Publik';
+                            apiName.appendChild(apiKeyBadge);
+                            
+                            const apiDesc = document.createElement('p');
+                            apiDesc.className = 'api-desc';
+                            apiDesc.textContent = item.desc;
+                            
+                            const apiPathContainer = document.createElement('div');
+                            apiPathContainer.className = 'api-path-container';
+                            
+                            const apiPath = document.createElement('code');
+                            apiPath.className = 'api-path';
+                            apiPath.textContent = item.path;
+                            
+                            const copyPathBtn = document.createElement('button');
+                            copyPathBtn.className = 'copy-path-btn';
+                            copyPathBtn.title = 'Salin endpoint';
+                            copyPathBtn.innerHTML = '<i class="far fa-copy"></i>';
+                            copyPathBtn.addEventListener('click', function() {
+                                navigator.clipboard.writeText(item.path).then(function() {
+                                    copyPathBtn.innerHTML = '<i class="fas fa-check"></i>';
+                                    setTimeout(function() {
+                                        copyPathBtn.innerHTML = '<i class="far fa-copy"></i>';
+                                    }, 2000);
+                                });
+                            });
+                            
+                            apiPathContainer.appendChild(apiPath);
+                            apiPathContainer.appendChild(copyPathBtn);
+                            
+                            const apiStatus = document.createElement('span');
+                            apiStatus.className = `api-status status-${item.status.toLowerCase()}`;
+                            
+                            const statusIcon = document.createElement('i');
+                            let statusText = item.status;
+                            
+                            switch(item.status.toLowerCase()) {
+                                case 'ready':
+                                    statusIcon.className = 'fas fa-circle-check';
+                                    statusText = 'Online';
+                                    break;
+                                case 'update':
+                                    statusIcon.className = 'fas fa-circle-notch fa-spin';
+                                    statusText = 'Update';
+                                    break;
+                                case 'offline':
+                                    statusIcon.className = 'fas fa-circle-xmark';
+                                    statusText = 'Offline';
+                                    break;
+                                case 'maintenance':
+                                    statusIcon.className = 'fas fa-tools';
+                                    statusText = 'Maintenance';
+                                    break;
+                                case 'error':
+                                    statusIcon.className = 'fas fa-circle-exclamation';
+                                    statusText = 'Error';
+                                    break;
+                                default:
+                                    statusIcon.className = 'fas fa-circle';
+                            }
+                            
+                            apiStatus.appendChild(statusIcon);
+                            apiStatus.appendChild(document.createTextNode(statusText));
+                            
+                            apiCard.append(apiName, apiDesc, apiPathContainer, apiStatus);
+                            
+                            if (item.params) {
+                                const paramTitle = document.createElement('p');
+                                paramTitle.className = 'param-title';
+                                paramTitle.textContent = 'Parameter:';
+                                
+                                const paramList = document.createElement('div');
+                                paramList.className = 'param-list';
+                                
+                                Object.entries(item.params).forEach(([key, desc]) => {
+                                    const paramItem = document.createElement('div');
+                                    paramItem.className = 'param-item';
+                                    paramItem.innerHTML = `<span class="param-name">${key}</span>: ${desc}`;
+                                    paramList.appendChild(paramItem);
+                                });
+                                
+                                apiCard.append(paramTitle, paramList);
+                            }
+                            
+                            const tryBtn = document.createElement('button');
+                            tryBtn.className = 'try-btn';
+                            tryBtn.textContent = 'Coba Sekarang';
+                            
+                            if (item.status.toLowerCase() !== 'ready') {
+                                tryBtn.classList.add('disabled');
+                                tryBtn.addEventListener('click', function() {
+                                    showStatusNotification(`Endpoint ini sedang ${statusText.toLowerCase()}!`);
+                                });
+                            } else {
+                                tryBtn.addEventListener('click', function() {
+                                    toggleTryContainer(apiCard, item);
+                                });
+                            }
+                            
+                            apiCard.appendChild(tryBtn);
+                            apiGrid.appendChild(apiCard);
+                        });
+                        
+                        categoryElement.append(categoryTitle, apiGrid);
+                        categoriesContainer.appendChild(categoryElement);
+                    });
+                    
+                    checkVisibility();
+                    
+                } catch (error) {
+                    console.error('Error:', error);
+                    const errorElement = document.createElement('div');
+                    errorElement.className = 'api-card';
+                    errorElement.style.backgroundColor = '#c62828';
+                    errorElement.style.color = 'white';
+                    errorElement.style.padding = '20px';
+                    errorElement.textContent = `Error memuat data API: ${error.message}`;
+                    document.getElementById('categories-container').appendChild(errorElement);
+                }
+            }
+            
+            function toggleTryContainer(apiCard, item) {
+                let tryContainer = apiCard.querySelector('.try-container');
+                
+                if (!tryContainer) {
+                    tryContainer = createTryContainer(apiCard, item);
+                }
+                
+                tryContainer.style.display = tryContainer.style.display === 'none' ? 'block' : 'none';
+            }
