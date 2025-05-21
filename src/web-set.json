@@ -61,6 +61,16 @@
           }
         },
         {
+          "name": "Ytmp4",
+          "desc": "Download video youtube",
+          "path": "/downloader/ytv?url=",
+          "status": "ready",
+          "requireKey": true,
+          "params": {
+            "url": "masukkan url"
+          }
+        },
+        {
           "name": "Douyin",
           "desc": "Download douyin",
           "path": "/downloader/douyin?url=",
