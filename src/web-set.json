@@ -101,9 +101,9 @@
       "name": "Random",
       "items": [
         {
-          "name": "Random anime",
-          "desc": "Get Random anime",
-          "path": "/random/anime",
+          "name": "Random waifu",
+          "desc": "Get Random waifu",
+          "path": "/random/waifu",
           "status": "ready",
           "requireKey": true
         }
