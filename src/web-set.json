@@ -19,7 +19,7 @@
           "name": "Film Finder AI",
           "desc": "Temukan film berdasarkan kriteria tertentu",
           "path": "/search/filmfinder?q=",
-          "status": "ready",
+          "status": "maintenance",
           "requireKey": false,
           "params": {
             "q": "Jenis film yang dicari (contoh: film horror tahun 90an)"
@@ -29,7 +29,7 @@
           "name": "Douyin Search",
           "desc": "Temukan Douyinmu Berdasarkan Kriteria",
           "path": "/search/douyinsearch?q=",
-          "status": "ready",
+          "status": "maintenance",
           "requireKey": false,
           "params": {
             "q": "Masukkan Query yang ingin dicari"
@@ -39,8 +39,8 @@
           "name": "Youtube Search",
           "desc": "Temukan Dari Youtube",
           "path": "/search/ytsearch?query=",
-          "status": "ready",
-          "requireKey": false,
+          "status": "error",
+          "requireKey": maintenance,
           "params": {
             "query": "Masukkan Query yang ingin dicari"
           }
@@ -55,7 +55,7 @@
           "desc": "Rapikan dan bersihkan codemu",
           "path": "/tools/beautyjs?code=",
           "status": "maintenance",
-          "requireKey": false,
+          "requireKey": maintenance,
           "params": {
             "code": "masukkan codemu"
           }
