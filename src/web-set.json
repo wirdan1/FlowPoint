@@ -71,6 +71,16 @@
           }
         },
         {
+          "name": "Tiktok",
+          "desc": "Downloader tiktok",
+          "path": "/downloader/tiktok?url=",
+          "status": "ready",
+          "requireKey": true,
+          "params": {
+            "url": "masukkan url"
+          }
+        },
+        {
           "name": "Douyin",
           "desc": "Download douyin",
           "path": "/downloader/douyin?url=",
