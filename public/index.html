@@ -2,653 +2,843 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Anomaki Apis - Koleksi API gratis untuk kebutuhan pengembangan aplikasi Anda">
-    <title>Anomaki Apis | Koleksi API Gratis</title>
-    
-    <!-- Font Awesome -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="FlowPoint Apis - Koleksi API gratis untuk kebutuhan pengembangan aplikasi Anda">
+    <meta name="keywords" content="API, Rest API, FlowPoint, Developer Tools, Free API">
+    <meta name="author" content="Hookrest Team">
+
+   <link rel="icon" href="https://i.pinimg.com/236x/4d/01/91/4d0191ec96622626c52b9691c74d677e.jpg">
+   <meta property="og:image" content="https://i.pinimg.com/236x/4d/01/91/4d0191ec96622626c52b9691c74d677e.jpg">
+   <meta property="og:url" content="https://www.apis-hookrest.zone.id">
+   <meta property="og:type" content="website">
+  
+    <meta property="og:title" content="FlowPoint Apis">
+    <meta property="og:description" content="Koleksi API gratis">
+    <meta property="og:type" content="website">
+    <title>FlowPoint Apis | API Gratis</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
     <style>
-        /* ===== VARIABLES ===== */
-        :root {
-            --primary: #4361ee;
-            --primary-dark: #3a56d4;
-            --primary-light: #4895ef;
-            --secondary: #3f37c9;
-            --accent: #f72585;
-            --text: #2b2d42;
-            --text-light: #8d99ae;
-            --bg: #f8f9fa;
-            --card-bg: #ffffff;
-            --border: #e9ecef;
-            --success: #4cc9f0;
-            --warning: #f8961e;
-            --danger: #ef233c;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-        }
-
-        [data-theme="dark"] {
-            --primary: #4895ef;
-            --primary-dark: #4361ee;
-            --primary-light: #4cc9f0;
-            --text: #edf2f4;
-            --text-light: #adb5bd;
-            --bg: #121212;
-            --card-bg: #1e1e1e;
-            --border: #2d2d2d;
-        }
-
-        /* ===== BASE STYLES ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            min-height: 100vh;
-        }
-
-        h1, h2, h3 {
-            font-weight: 600;
-            line-height: 1.2;
-        }
-
-        /* ===== LAYOUT ===== */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* ===== HEADER ===== */
-        header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 60px 0 80px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            margin-bottom: 40px;
-        }
-
-        header::before {
-            content: "";
-            position: absolute;
-            bottom: -50px;
-            left: 0;
-            right: 0;
-            height: 100px;
-            background-color: var(--bg);
-            transform: skewY(-3deg);
-            z-index: 1;
-        }
-
-        .header-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        h1 {
-            font-size: 2.8rem;
-            margin-bottom: 15px;
-        }
-
-        .status-badge {
-            display: inline-block;
-            background-color: rgba(255, 255, 255, 0.2);
-            padding: 6px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            margin-bottom: 20px;
-            backdrop-filter: blur(5px);
-        }
-
-        .description {
-            max-width: 600px;
-            margin: 0 auto 30px;
-            opacity: 0.9;
-        }
-
-        /* ===== THEME TOGGLE ===== */
-        .theme-toggle {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            padding: 8px 15px;
-            border-radius: 30px;
-            color: white;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.9rem;
-            backdrop-filter: blur(5px);
-            transition: var(--transition);
-            z-index: 10;
-        }
-
-        .theme-toggle:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        /* ===== SEARCH ===== */
-        .search-container {
-            max-width: 600px;
-            margin: -30px auto 40px;
-            position: relative;
-            z-index: 3;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 15px 25px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1rem;
-            background-color: var(--card-bg);
-            color: var(--text);
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            padding-right: 50px;
-        }
-
-        .search-input:focus {
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.3);
-        }
-
-        .search-icon {
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-light);
-        }
-
-        /* ===== CATEGORIES ===== */
-        .category {
-            margin-bottom: 50px;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-
-        .category.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .category-title {
-            font-size: 1.6rem;
-            margin-bottom: 20px;
-            color: var(--primary);
-            position: relative;
-            display: inline-block;
-            padding-bottom: 8px;
-        }
-
-        .category-title::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background-color: var(--primary);
-        }
-
-        /* ===== API GRID ===== */
-        .api-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 25px;
-        }
-
-        /* ===== API CARD ===== */
-        .api-card {
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            padding: 25px;
-            transition: var(--transition);
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-        .api-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .api-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 15px;
-        }
-
-        .api-name {
-            font-size: 1.3rem;
-            color: var(--primary);
-            font-weight: 500;
-        }
-
-        .api-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            background-color: var(--primary-light);
-            color: white;
-        }
-
-        .api-badge.public {
-            background-color: var(--success);
-        }
-
-        .api-desc {
-            margin-bottom: 15px;
-            color: var(--text-light);
-            line-height: 1.5;
-            flex-grow: 1;
-        }
-
-        .api-path-container {
-            position: relative;
-            margin-bottom: 15px;
-            background-color: rgba(67, 97, 238, 0.05);
-            border-radius: 8px;
-            padding: 12px;
-            border: 1px dashed var(--border);
-        }
-
-        .api-path {
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.9rem;
-            color: var(--primary);
-            word-break: break-all;
-        }
-
-        .copy-path-btn {
-            position: absolute;
-            right: 10px;
-            top: 10px;
-            background: rgba(67, 97, 238, 0.1);
-            border: none;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            color: var(--primary);
-            transition: var(--transition);
-        }
-
-        .copy-path-btn:hover {
-            background: rgba(67, 97, 238, 0.2);
-        }
-
-        .api-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 15px;
-        }
-
-        .api-status {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            font-size: 0.8rem;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-weight: 500;
-        }
-
-        .status-ready {
-            background-color: rgba(76, 201, 240, 0.1);
-            color: var(--success);
-        }
-
-        .status-update {
-            background-color: rgba(248, 150, 30, 0.1);
-            color: var(--warning);
-        }
-
-        .status-offline {
-            background-color: rgba(239, 35, 60, 0.1);
-            color: var(--danger);
-        }
-
-        .status-maintenance {
-            background-color: rgba(248, 150, 30, 0.1);
-            color: var(--warning);
-        }
-
-        .try-btn {
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .try-btn:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-2px);
-        }
-
-        .try-btn.disabled {
-            background-color: var(--text-light);
-            cursor: not-allowed;
-            opacity: 0.7;
-        }
-
-        /* ===== TRY CONTAINER ===== */
-        .try-container {
-            margin-top: 20px;
-            display: none;
-            border-radius: 8px;
-            padding: 20px;
-            background-color: rgba(67, 97, 238, 0.05);
-            border: 1px dashed var(--border);
-        }
-
-        .input-group {
-            margin-bottom: 15px;
-        }
-
-        .input-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-size: 0.9rem;
-            color: var(--text-light);
-            font-weight: 500;
-        }
-
-        .input-group input {
-            width: 100%;
-            padding: 10px 15px;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            font-size: 0.9rem;
-            transition: var(--transition);
-        }
-
-        .input-group input:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
-        }
-
-        .execute-btn {
-            background-color: var(--accent);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .execute-btn:hover {
-            background-color: #e51778;
-            transform: translateY(-2px);
-        }
-
-        /* ===== POPUP ===== */
-        .popup {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            backdrop-filter: blur(5px);
-            animation: fadeIn 0.3s;
-        }
-
-        .popup-content {
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            width: 90%;
-            max-width: 800px;
-            max-height: 80vh;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-        }
-
-        .popup-header {
-            padding: 20px;
-            background-color: var(--primary);
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .popup-title {
-            font-size: 1.3rem;
-            font-weight: 500;
-        }
-
-        .close-popup {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: var(--transition);
-        }
-
-        .close-popup:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .popup-body {
-            flex: 1;
-            padding: 20px;
-            overflow-y: auto;
-            background-color: var(--bg);
-        }
-
-        .result-content {
-            white-space: pre-wrap;
-            word-wrap: break-word;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.85rem;
-            line-height: 1.5;
-            background-color: var(--card-bg);
-            padding: 15px;
-            border-radius: 6px;
-            border: 1px solid var(--border);
-        }
-
-        .popup-footer {
-            padding: 15px 20px;
-            display: flex;
-            justify-content: flex-end;
-            background-color: var(--card-bg);
-            border-top: 1px solid var(--border);
-        }
-
-        .copy-btn {
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: var(--transition);
-        }
-
-        .copy-btn:hover {
-            background-color: var(--primary-dark);
-        }
-
-        /* ===== LOADING ===== */
-        .loading {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(67, 97, 238, 0.3);
-            border-radius: 50%;
-            border-top-color: var(--primary);
-            animation: spin 1s ease-in-out infinite;
-        }
-
-        /* ===== NOTIFICATION ===== */
-        .notification {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: var(--accent);
-            color: white;
-            padding: 12px 25px;
-            border-radius: 30px;
-            box-shadow: var(--shadow);
-            z-index: 1001;
-            font-weight: 500;
-            display: none;
-            align-items: center;
-            gap: 10px;
-            animation: slideDown 0.3s;
-        }
-
-        /* ===== FOOTER ===== */
-        footer {
-            text-align: center;
-            padding: 40px 0;
-            margin-top: 60px;
-            color: var(--text-light);
-            font-size: 0.9rem;
-            border-top: 1px solid var(--border);
-        }
-
-        /* ===== ANIMATIONS ===== */
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes slideDown {
-            from { transform: translate(-50%, -20px); opacity: 0; }
-            to { transform: translate(-50%, 0); opacity: 1; }
-        }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 768px) {
-            .api-grid {
-                grid-template-columns: 1fr;
-            }
-
-            h1 {
-                font-size: 2.2rem;
-            }
-
-            .header-content {
-                padding: 0 20px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 1.8rem;
-            }
-
-            .search-container {
-                margin: -20px auto 30px;
-                padding: 0 15px;
-            }
-
-            .search-input {
-                padding: 12px 20px;
-                padding-right: 40px;
-            }
-
-            .popup-content {
-                width: 95%;
-            }
-        }
+:root {
+    /* Dark mode as default */
+    --bg-primary: #121212;
+    --bg-secondary: #1e1e1e;
+    --bg-card: #252525;
+    --bg-card-hover: #2d2d2d;
+    --text-primary: #f5f5f5;
+    --text-secondary: #a0a0a0;
+    --accent-primary: #7c4dff;
+    --accent-secondary: #b388ff;
+    --accent-gradient: linear-gradient(135deg, #7c4dff, #b388ff);
+    --border-color: #333333;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --success: #4caf50;
+    --warning: #ff9800;
+    --error: #f44336;
+    --info: #2196f3;
+}
+
+[data-theme="light"] {
+    --bg-primary: #f5f5f5;
+    --bg-secondary: #ffffff;
+    --bg-card: #ffffff;
+    --bg-card-hover: #f9f9f9;
+    --text-primary: #212121;
+    --text-secondary: #616161;
+    --accent-primary: #7c4dff;
+    --accent-secondary: #b388ff;
+    --accent-gradient: linear-gradient(135deg, #7c4dff, #b388ff);
+    --border-color: #e0e0e0;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    width: 100%;
+}
+
+/* Header Styles */
+header {
+    padding: 40px 0;
+    margin-bottom: 40px;
+    position: relative;
+    background-color: var(--bg-secondary);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--accent-gradient);
+    opacity: 0.05;
+    z-index: 0;
+}
+
+.header-content {
+    position: relative;
+    z-index: 1;
+    padding: 0 30px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+}
+
+.status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    background-color: rgba(76, 175, 80, 0.2);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+    font-weight: 500;
+    color: var(--success);
+}
+
+.status i {
+    font-size: 0.75rem;
+}
+
+.description {
+    max-width: 800px;
+    margin-bottom: 20px;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text-primary);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.theme-toggle:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Search Bar */
+.search-container {
+    margin: 20px auto 40px;
+    max-width: 600px;
+    position: relative;
+    width: 100%;
+}
+
+.search-input {
+    width: 100%;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    box-shadow: 0 4px 6px var(--shadow-color);
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    box-shadow: 0 6px 12px var(--shadow-color), 0 0 0 2px var(--accent-primary);
+}
+
+.search-input::placeholder {
+    color: var(--text-secondary);
+}
+
+/* Category Styles */
+.category {
+    margin-bottom: 50px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.category.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.category-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border-color);
+    color: var(--text-primary);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.category-title::before {
+    content: "";
+    display: inline-block;
+    width: 4px;
+    height: 20px;
+    background: var(--accent-gradient);
+    border-radius: 2px;
+}
+
+.api-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 20px;
+}
+
+/* API Card Styles */
+.api-card {
+    background-color: var(--bg-card);
+    border-radius: 12px;
+    padding: 25px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 6px var(--shadow-color);
+}
+
+.api-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px var(--shadow-color);
+    background-color: var(--bg-card-hover);
+}
+
+.api-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--accent-gradient);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.api-card:hover::before {
+    opacity: 1;
+}
+
+.api-name {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    font-weight: 600;
+}
+
+.api-desc {
+    margin-bottom: 15px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    word-wrap: break-word;
+    font-size: 0.95rem;
+}
+
+.api-path-container {
+    position: relative;
+    margin-bottom: 15px;
+    background-color: var(--bg-primary);
+    border-radius: 6px;
+    padding: 12px;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-primary) var(--bg-primary);
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid var(--border-color);
+}
+
+.api-path-container::-webkit-scrollbar {
+    height: 6px;
+}
+
+.api-path-container::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+    border-radius: 3px;
+}
+
+.api-path-container::-webkit-scrollbar-thumb {
+    background-color: var(--accent-primary);
+    border-radius: 3px;
+}
+
+.api-path {
+    font-family: 'Fira Code', 'Courier New', Courier, monospace;
+    font-size: 0.85rem;
+    color: var(--accent-secondary);
+    word-break: break-all;
+    padding: 5px 35px 5px 10px;
+    display: inline-block;
+    min-width: 100%;
+    box-sizing: border-box;
+}
+
+.copy-path-btn {
+    position: sticky;
+    right: 8px;
+    top: 8px;
+    float: right;
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 3px;
+    z-index: 1;
+    transition: color 0.2s ease;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+}
+
+.copy-path-btn:hover {
+    color: var(--accent-primary);
+    background: rgba(124, 77, 255, 0.1);
+}
+
+/* Status Badges */
+.api-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.status-ready {
+    background-color: rgba(76, 175, 80, 0.15);
+    color: var(--success);
+}
+
+.status-update {
+    background-color: rgba(255, 193, 7, 0.15);
+    color: var(--warning);
+}
+
+.status-offline {
+    background-color: rgba(244, 67, 54, 0.15);
+    color: var(--error);
+}
+
+.status-maintenance {
+    background-color: rgba(255, 152, 0, 0.15);
+    color: var(--warning);
+}
+
+.api-key-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    background-color: rgba(124, 77, 255, 0.15);
+    color: var(--accent-primary);
+    font-weight: 500;
+}
+
+.api-key-badge.public {
+    background-color: rgba(76, 175, 80, 0.15);
+    color: var(--success);
+}
+
+.api-key-badge i {
+    font-size: 0.7rem;
+}
+
+.param-title {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.param-list {
+    margin-bottom: 18px;
+    border-left: 2px solid var(--accent-primary);
+    padding-left: 14px;
+}
+
+.param-item {
+    margin-bottom: 8px;
+    font-size: 0.85rem;
+    word-break: break-word;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.param-name {
+    font-family: 'Fira Code', 'Courier New', Courier, monospace;
+    color: var(--accent-secondary);
+    font-weight: 500;
+}
+
+/* Buttons */
+.try-btn {
+    background: var(--accent-gradient);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 500;
+    width: 100%;
+    margin-top: auto;
+    box-shadow: 0 4px 12px rgba(124, 77, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 0.95rem;
+}
+
+.try-btn:hover:not(.disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(124, 77, 255, 0.4);
+}
+
+.try-btn.disabled {
+    background: #424242;
+    cursor: not-allowed;
+    opacity: 0.7;
+    box-shadow: none;
+}
+
+.try-container {
+    margin-top: 20px;
+    display: none;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: var(--bg-secondary);
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid var(--border-color);
+}
+
+.input-group {
+    margin-bottom: 18px;
+    width: 100%;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 15px;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    font-family: 'Fira Code', 'Courier New', Courier, monospace;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 2px rgba(124, 77, 255, 0.2);
+}
+
+.execute-btn {
+    background: var(--accent-gradient);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 12px rgba(124, 77, 255, 0.3);
+}
+
+.execute-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(124, 77, 255, 0.4);
+}
+
+/* Popup Styles */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.3s;
+}
+
+.popup-content {
+    background-color: var(--bg-secondary);
+    padding: 30px;
+    border-radius: 16px;
+    max-width: 90%;
+    width: 850px;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border-color);
+}
+
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.popup-title {
+    font-size: 1.4rem;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.close-popup {
+    background: transparent;
+    color: var(--text-secondary);
+    border: none;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 50%;
+    transition: all 0.2s;
+}
+
+.close-popup:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+}
+
+.popup-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+}
+
+.result-content {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: 'Fira Code', 'Courier New', Courier, monospace;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--text-primary);
+}
+
+.popup-footer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.copy-btn {
+    background: var(--accent-gradient);
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s;
+    box-shadow: 0 4px 12px rgba(124, 77, 255, 0.3);
+}
+
+.copy-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(124, 77, 255, 0.4);
+}
+
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    border-top-color: var(--accent-primary);
+    animation: spin 1s ease-in-out infinite;
+    margin-right: 10px;
+}
+
+.error-message {
+    color: var(--text-primary);
+    padding: 15px;
+    background-color: rgba(244, 67, 54, 0.1);
+    border-radius: 8px;
+    margin-top: 10px;
+    border-left: 3px solid var(--error);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.status-notification {
+    position: fixed;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    padding: 14px 24px;
+    border-radius: 10px;
+    z-index: 1001;
+    font-weight: 500;
+    text-align: center;
+    max-width: 90%;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.status-notification.show {
+    opacity: 1;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 50px 0;
+    margin-top: 80px;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+footer p {
+    margin-bottom: 8px;
+}
+
+.heart {
+    color: #ff4d4d;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .header-content {
+        padding: 0 30px;
+    }
+    
+    h1 {
+        font-size: 2.4rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .api-grid {
+        grid-template-columns: 1fr;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    header {
+        padding: 50px 0;
+        border-radius: 12px;
+    }
+    
+    .header-content {
+        padding: 0 25px;
+    }
+    
+    .search-container {
+        margin: 20px auto 40px;
+    }
+    
+    .search-input {
+        padding: 14px 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    h1 {
+        font-size: 1.9rem;
+    }
+    
+    .header-content {
+        padding: 0 20px;
+    }
+    
+    .description {
+        font-size: 1rem;
+    }
+    
+    .theme-toggle {
+        width: 40px;
+        height: 40px;
+        top: 20px;
+        right: 20px;
+    }
+    
+    .popup-content {
+        padding: 20px;
+        width: 95%;
+    }
+    
+    footer {
+        padding: 40px 0;
+        margin-top: 60px;
+    }
+}
+
+@media (max-width: 400px) {
+    h1 {
+        font-size: 1.7rem;
+    }
+    
+    .header-content {
+        padding: 0 15px;
+    }
+    
+    .status {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
+    
+    .category-title {
+        font-size: 1.4rem;
+    }
+    
+    .api-card {
+        padding: 22px;
+    }
+}
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <button class="theme-toggle" id="themeToggle">
-                <i class="fas fa-moon"></i>
-                <span>Dark Mode</span>
-            </button>
-            
             <div class="header-content">
-                <h1 id="api-name">Anomaki Apis</h1>
-                <div class="status-badge" id="api-status">Online</div>
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <h1 id="api-name">FlowPoint Apis</h1>
+                <div class="status" id="api-status">
+                    <i class="fas fa-circle"></i>
+                    <span>Online</span>
+                </div>
                 <p class="description" id="api-description">Koleksi API gratis untuk kebutuhan pengembangan aplikasi Anda</p>
             </div>
         </header>
         
         <div class="search-container">
             <input type="text" class="search-input" id="searchInput" placeholder="Cari API berdasarkan nama atau deskripsi...">
-            <i class="fas fa-search search-icon"></i>
         </div>
         
         <div id="categories-container"></div>
         
         <footer>
-            <p>Dibuat dengan <i class="fas fa-heart" style="color: var(--accent)"></i> oleh <span id="api-creator">Anomaki Team</span></p>
+            <p>Dibuat dengan <span class="heart">❤</span> oleh <span id="api-creator">Hookrest Team</span></p>
             <p>Versi <span id="api-version">v1.0</span></p>
         </footer>
     </div>
@@ -664,39 +854,39 @@
             <div class="popup-body" id="popupBody"></div>
             <div class="popup-footer">
                 <button class="copy-btn" id="copyResultBtn">
-                    <i class="fas fa-copy"></i>
-                    <span>Salin</span>
+                    <i class="fas fa-copy"></i> Salin
                 </button>
             </div>
         </div>
     </div>
 
-    <div class="notification" id="notification">
+    <div class="status-notification" id="statusNotification">
         <i class="fas fa-check-circle"></i>
         <span id="notificationText">Notification text</span>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Theme Toggle
             const themeToggle = document.getElementById('themeToggle');
-            const currentTheme = localStorage.getItem('theme') || 'light';
+            let currentTheme = localStorage.getItem('theme') || 'dark';
             document.documentElement.setAttribute('data-theme', currentTheme);
             
-            if (currentTheme === 'dark') {
-                themeToggle.innerHTML = '<i class="fas fa-sun"></i><span>Light Mode</span>';
+            // Update theme toggle icon based on current theme
+            function updateThemeToggle() {
+                if (currentTheme === 'dark') {
+                    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                } else {
+                    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                }
             }
+            updateThemeToggle();
             
             themeToggle.addEventListener('click', function() {
                 const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
                 document.documentElement.setAttribute('data-theme', newTheme);
                 localStorage.setItem('theme', newTheme);
-                
-                if (newTheme === 'dark') {
-                    themeToggle.innerHTML = '<i class="fas fa-sun"></i><span>Light Mode</span>';
-                } else {
-                    themeToggle.innerHTML = '<i class="fas fa-moon"></i><span>Dark Mode</span>';
-                }
+                currentTheme = newTheme;
+                updateThemeToggle();
             });
 
             // Popup Elements
@@ -705,7 +895,7 @@
             const popupBody = document.getElementById('popupBody');
             const popupTitle = document.getElementById('popupTitle');
             const copyResultBtn = document.getElementById('copyResultBtn');
-            const notification = document.getElementById('notification');
+            const statusNotification = document.getElementById('statusNotification');
             const notificationText = document.getElementById('notificationText');
             
             // Close Popup
@@ -730,18 +920,17 @@
             // Show Notification
             function showNotification(message, isError = false) {
                 notificationText.textContent = message;
-                notification.style.display = 'flex';
                 
                 if (isError) {
-                    notification.style.backgroundColor = 'var(--danger)';
-                    notification.innerHTML = '<i class="fas fa-exclamation-circle"></i><span id="notificationText">' + message + '</span>';
+                    statusNotification.innerHTML = '<i class="fas fa-exclamation-circle" style="color: var(--error)"></i><span id="notificationText">' + message + '</span>';
                 } else {
-                    notification.style.backgroundColor = 'var(--accent)';
-                    notification.innerHTML = '<i class="fas fa-check-circle"></i><span id="notificationText">' + message + '</span>';
+                    statusNotification.innerHTML = '<i class="fas fa-check-circle" style="color: var(--success)"></i><span id="notificationText">' + message + '</span>';
                 }
                 
+                statusNotification.classList.add('show');
+                
                 setTimeout(function() {
-                    notification.style.display = 'none';
+                    statusNotification.classList.remove('show');
                 }, 3000);
             }
             
@@ -806,66 +995,11 @@
             // Load API Data
             async function loadApiData() {
                 try {
-                    // In a real implementation, you would fetch this from your server
-                    // For demo purposes, we'll use mock data
-                    const data = {
-                        name: "Anomaki Apis",
-                        header: {
-                            status: "Online"
-                        },
-                        description: "Koleksi API gratis untuk kebutuhan pengembangan aplikasi Anda",
-                        apiSettings: {
-                            creator: "Anomaki Team"
-                        },
-                        version: "v1.0",
-                        categories: [
-                            {
-                                name: "Utility",
-                                items: [
-                                    {
-                                        name: "Shorten URL",
-                                        desc: "Mempersingkat URL panjang menjadi lebih pendek",
-                                        path: "https://api.anomaki.zone/shorten",
-                                        requireKey: false,
-                                        status: "ready",
-                                        params: {
-                                            url: "URL yang akan dipersingkat"
-                                        }
-                                    },
-                                    {
-                                        name: "QR Generator",
-                                        desc: "Membuat QR code dari teks atau URL",
-                                        path: "https://api.anomaki.zone/qr",
-                                        requireKey: false,
-                                        status: "ready",
-                                        params: {
-                                            text: "Teks atau URL untuk QR code",
-                                            size: "Ukuran QR code (100-500)"
-                                        }
-                                    }
-                                ]
-                            },
-                            {
-                                name: "Entertainment",
-                                items: [
-                                    {
-                                        name: "Quotes",
-                                        desc: "Koleksi quotes inspiratif",
-                                        path: "https://api.anomaki.zone/quotes",
-                                        requireKey: false,
-                                        status: "ready"
-                                    },
-                                    {
-                                        name: "Jokes",
-                                        desc: "Koleksi joke lucu",
-                                        path: "https://api.anomaki.zone/jokes",
-                                        requireKey: true,
-                                        status: "ready"
-                                    }
-                                ]
-                            }
-                        ]
-                    };
+                    const response = await fetch('/src/web-set.json');
+                    if (!response.ok) {
+                        throw new Error('Gagal memuat data: ' + response.status);
+                    }
+                    const data = await response.json();
                     
                     // Update Header Info
                     document.getElementById('api-name').textContent = data.name;
@@ -906,7 +1040,7 @@
                             apiName.textContent = item.name;
                             
                             const apiBadge = document.createElement('span');
-                            apiBadge.className = `api-badge ${item.requireKey ? '' : 'public'}`;
+                            apiBadge.className = `api-key-badge ${item.requireKey ? '' : 'public'}`;
                             apiBadge.innerHTML = item.requireKey ? '<i class="fas fa-key"></i> Butuh Key' : '<i class="fas fa-lock-open"></i> Publik';
                             
                             apiHeader.append(apiName, apiBadge);
@@ -1057,6 +1191,7 @@
                     
                     const keyLabel = document.createElement('label');
                     keyLabel.textContent = 'API Key';
+                    keyLabel.innerHTML += ' <span style="color: var(--accent-secondary)">*wajib</span>';
                     
                     const keyInput = document.createElement('input');
                     keyInput.type = 'text';
@@ -1088,6 +1223,9 @@
                 }
                 
                 // Add Execute Button
+                const buttonGroup = document.createElement('div');
+                buttonGroup.style.marginTop = '15px';
+                
                 const executeBtn = document.createElement('button');
                 executeBtn.className = 'execute-btn';
                 executeBtn.innerHTML = '<i class="fas fa-play"></i> Jalankan';
@@ -1095,7 +1233,9 @@
                     executeApi(item);
                 });
                 
-                tryContainer.appendChild(executeBtn);
+                buttonGroup.appendChild(executeBtn);
+                tryContainer.appendChild(buttonGroup);
+                
                 apiCard.appendChild(tryContainer);
                 return tryContainer;
             }
@@ -1112,60 +1252,51 @@
                 apiPopup.style.display = 'flex';
                 
                 try {
-                    // In a real implementation, this would make an actual API call
-                    // For demo, we'll simulate a response
-                    await new Promise(resolve => setTimeout(resolve, 1000));
+                    let url = item.path.split('?')[0];
+                    const params = new URLSearchParams();
                     
-                    let mockResponse;
-                    
-                    if (item.name === "Shorten URL") {
-                        mockResponse = {
-                            success: true,
-                            original_url: "https://example.com/very/long/url/to/be/shortened",
-                            short_url: "https://anom.aki/abc123"
-                        };
-                    } else if (item.name === "QR Generator") {
-                        mockResponse = {
-                            success: true,
-                            qr_code: "https://api.anomaki.zone/qr/image/abc123.png",
-                            text: "Sample text for QR code"
-                        };
-                    } else if (item.name === "Quotes") {
-                        mockResponse = [
-                            {
-                                quote: "The only way to do great work is to love what you do.",
-                                author: "Steve Jobs"
-                            },
-                            {
-                                quote: "Innovation distinguishes between a leader and a follower.",
-                                author: "Steve Jobs"
-                            }
-                        ];
-                    } else {
-                        mockResponse = {
-                            success: true,
-                            message: "API request successful",
-                            data: {
-                                sample: "This is a mock response for demonstration purposes"
-                            }
-                        };
+                    if (item.requireKey) {
+                        const apiKey = document.getElementById(`api-key-${item.name.replace(/\s+/g, '-').toLowerCase()}`).value.trim();
+                        if (!apiKey) {
+                            throw new Error('API key diperlukan');
+                        }
+                        params.append('apikey', apiKey);
                     }
                     
-                    // Display Result
+                    if (item.params) {
+                        Object.keys(item.params).forEach(param => {
+                            const input = document.getElementById(`param-${param}-${item.name.replace(/\s+/g, '-').toLowerCase()}`);
+                            if (input && input.value.trim()) {
+                                params.append(param, input.value.trim());
+                            }
+                        });
+                    }
+                    
+                    if (params.toString()) {
+                        url += '?' + params.toString();
+                    }
+                    
+                    const response = await fetch(url);
+                    
+                    if (!response.ok) {
+                        throw new Error(`Request gagal dengan status ${response.status}`);
+                    }
+                    
+                    const data = await response.json();
+                    
                     popupBody.innerHTML = '';
                     const pre = document.createElement('pre');
                     pre.className = 'result-content';
-                    pre.textContent = JSON.stringify(mockResponse, null, 2);
+                    pre.textContent = JSON.stringify(data, null, 2);
                     popupBody.appendChild(pre);
                     
                 } catch (error) {
                     console.error('Error:', error);
                     popupBody.innerHTML = `
-                        <div style="text-align: center; padding: 20px; color: var(--danger)">
-                            <i class="fas fa-exclamation-triangle" style="font-size: 2rem; margin-bottom: 15px;"></i>
-                            <h3 style="margin-bottom: 10px;">Error</h3>
-                            <p>${error.message}</p>
-                            <p style="margin-top: 10px;">Coba lagi atau periksa parameter Anda</p>
+                        <div class="error-message">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <p><strong>Error:</strong> ${error.message}</p>
+                            <p>Coba lagi atau periksa parameter Anda</p>
                         </div>
                     `;
                 }
@@ -1177,9 +1308,9 @@
                 if (pre) {
                     navigator.clipboard.writeText(pre.textContent).then(function() {
                         showNotification('Hasil berhasil disalin!');
-                        copyResultBtn.innerHTML = '<i class="fas fa-check"></i><span>Tersalin!</span>';
+                        copyResultBtn.innerHTML = '<i class="fas fa-check"></i> Tersalin!';
                         setTimeout(function() {
-                            copyResultBtn.innerHTML = '<i class="fas fa-copy"></i><span>Salin</span>';
+                            copyResultBtn.innerHTML = '<i class="fas fa-copy"></i> Salin';
                         }, 2000);
                     });
                 }
