@@ -39,8 +39,8 @@
           "name": "Youtube Search",
           "desc": "Temukan Dari Youtube",
           "path": "/search/ytsearch?query=",
-          "status": "error",
-          "requireKey": maintenance,
+          "status": "maintenance",
+          "requireKey": false,
           "params": {
             "query": "Masukkan Query yang ingin dicari"
           }
@@ -55,7 +55,7 @@
           "desc": "Rapikan dan bersihkan codemu",
           "path": "/tools/beautyjs?code=",
           "status": "maintenance",
-          "requireKey": maintenance,
+          "requireKey": false,
           "params": {
             "code": "masukkan codemu"
           }
