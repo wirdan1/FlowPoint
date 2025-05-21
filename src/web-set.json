@@ -51,9 +51,9 @@
       "name": "Downloader",
       "items": [
         {
-          "name": "Douyin",
-          "desc": "Download tiktok china",
-          "path": "/downloader/douyin?url=",
+          "name": "Ytmp3",
+          "desc": "Download audio youtube",
+          "path": "/downloader/yta?url=",
           "status": "ready",
           "requireKey": true,
           "params": {
