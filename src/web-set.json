@@ -86,6 +86,21 @@
           }
         }
       ]
+    },
+    {
+      "name": "Random",
+      "items": [
+        {
+          "name": "Random Anime",
+          "desc": "Anime random",
+          "path": "/random/anime",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "code": "masukkan codemu"
+          }
+        }
+      ]
     }
   ]
 }
