@@ -104,7 +104,7 @@
           "name": "Random waifu",
           "desc": "Get Random waifu",
           "path": "/random/waifu",
-          "status": "ready",
+          "status": "maintenance",
           "requireKey": true
         }
       ]
