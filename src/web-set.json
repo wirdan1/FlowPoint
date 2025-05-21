@@ -8,7 +8,7 @@
   },
   "apiSettings": {
     "creator": "Hookrest - Danz",
-    "globalKey": ["daNz"],
+    "globalKey": ["hookrest"],
     "defaultRequireKey": true
   },
   "categories": [
@@ -64,8 +64,8 @@
           "name": "Douyin",
           "desc": "Download douyin",
           "path": "/downloader/douyin?url=",
-          "status": "ready",
-          "requireKey": true,
+          "status": "maintenance",
+          "requireKey": false,
           "params": {
             "url": "masukkan codemu"
           }
