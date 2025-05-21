@@ -55,7 +55,7 @@
           "desc": "Rapikan dan bersihkan codemu",
           "path": "/tools/beautyjs?code=",
           "status": "ready",
-          "requireKey": false,
+          "requireKey": true,
           "params": {
             "code": "masukkan codemu"
           }
