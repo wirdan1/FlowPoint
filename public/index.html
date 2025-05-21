@@ -2,269 +2,186 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Anomaki Apis - Koleksi API gratis untuk kebutuhan pengembangan aplikasi Anda">
-    <meta name="keywords" content="API, Rest API, Anomaki, Developer Tools, Free API">
-    <meta name="author" content="Anomaki Team">
-
-   <link rel="icon" href="https://i.pinimg.com/236x/4d/01/91/4d0191ec96622626c52b9691c74d677e.jpg">
-   <meta property="og:image" content="https://i.pinimg.com/236x/4d/01/91/4d0191ec96622626c52b9691c74d677e.jpg">
-   <meta property="og:url" content="https://www.apis-anomaki.zone.id">
-   <meta property="og:type" content="website">
-  
-    <meta property="og:title" content="Anomaki Apis">
-    <meta property="og:description" content="Koleksi API gratis">
-    <meta property="og:type" content="website">
-    <title>Anomaki Apis | API Gratis</title>
+    <title>Anomaki Apis | Koleksi API Gratis</title>
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
+        /* ===== VARIABLES ===== */
         :root {
-            --primary: #FF3D3D;
-            --primary-dark: #C62828;
-            --primary-light: #FF6B6B;
-            --secondary: #333333;
-            --text: #222222;
-            --text-secondary: #555555;
-            --bg: #FFFFFF;
-            --card-bg: #F8F8F8;
-            --border-color: #000000;
-            --shadow-color: rgba(0, 0, 0, 0.3);
-            --highlight: #FFEB3B;
-            --banner-bg: #FF5722;
-            --comic-border: 3px solid var(--border-color);
-            --comic-shadow: 5px 5px 0 var(--shadow-color);
+            --primary: #4361ee;
+            --primary-dark: #3a56d4;
+            --primary-light: #4895ef;
+            --secondary: #3f37c9;
+            --accent: #f72585;
+            --text: #2b2d42;
+            --text-light: #8d99ae;
+            --bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --border: #e9ecef;
+            --success: #4cc9f0;
+            --warning: #f8961e;
+            --danger: #ef233c;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
         }
 
         [data-theme="dark"] {
-            --primary: #FF5252;
-            --primary-dark: #FF1744;
-            --primary-light: #FF8A80;
-            --secondary: #212121;
-            --text: #E0E0E0;
-            --text-secondary: #9E9E9E;
+            --primary: #4895ef;
+            --primary-dark: #4361ee;
+            --primary-light: #4cc9f0;
+            --text: #edf2f4;
+            --text-light: #adb5bd;
             --bg: #121212;
-            --card-bg: #1E1E1E;
-            --border-color: #424242;
-            --shadow-color: rgba(0, 0, 0, 0.5);
-            --highlight: #FFC107;
-            --banner-bg: #E64A19;
+            --card-bg: #1e1e1e;
+            --border: #2d2d2d;
         }
 
+        /* ===== BASE STYLES ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Comic Sans MS', 'Marker Felt', 'Arial Rounded MT Bold', sans-serif;
         }
 
         body {
+            font-family: 'Poppins', sans-serif;
             background-color: var(--bg);
             color: var(--text);
             line-height: 1.6;
-            background-image: radial-gradient(circle at 1px 1px, var(--border-color) 1px, transparent 0);
-            background-size: 20px 20px;
-            overflow-x: hidden;
-            width: 100%;
-            position: relative;
+            min-height: 100vh;
         }
 
-        html, body {
-            max-width: 100%;
-            overflow-x: hidden;
+        h1, h2, h3 {
+            font-weight: 600;
+            line-height: 1.2;
         }
 
+        /* ===== LAYOUT ===== */
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
-            width: 100%;
+            padding: 0 20px;
         }
 
-        .comic-banner {
-            position: relative;
-            margin: 0 auto 30px;
-            border: var(--comic-border);
-            box-shadow: var(--comic-shadow);
-            overflow: hidden;
-            max-width: 100%;
-            height: auto;
-            background-color: var(--banner-bg);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            flex-direction: column;
+        /* ===== HEADER ===== */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 60px 0 80px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 40px;
         }
 
-        .comic-banner::before {
+        header::before {
             content: "";
             position: absolute;
-            top: 0;
+            bottom: -50px;
             left: 0;
             right: 0;
-            bottom: 0;
-            background: repeating-linear-gradient(
-                -45deg,
-                rgba(0,0,0,0.05),
-                rgba(0,0,0,0.05) 10px,
-                transparent 10px,
-                transparent 20px
-            );
+            height: 100px;
+            background-color: var(--bg);
+            transform: skewY(-3deg);
             z-index: 1;
         }
 
-        .comic-banner img {
-            max-width: 100%;
-            height: auto;
-            border: 3px solid black;
-            box-shadow: 3px 3px 0 var(--shadow-color);
+        .header-content {
             position: relative;
             z-index: 2;
-            transition: transform 0.3s ease;
-        }
-
-        .comic-banner img:hover {
-            transform: rotate(-2deg) scale(1.02);
-        }
-
-        .comic-banner .banner-caption {
-            position: absolute;
-            bottom: 10px;
-            left: 0;
-            right: 0;
-            background-color: rgba(0,0,0,0.7);
-            color: white;
-            padding: 5px;
-            font-size: 0.8rem;
-            z-index: 3;
-        }
-
-        .comic-banner .speech-bubble {
-            position: absolute;
-            background-color: white;
-            border: var(--comic-border);
-            border-radius: 50%;
-            padding: 15px;
-            max-width: 200px;
-            box-shadow: var(--comic-shadow);
-            z-index: 4;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        .comic-banner .speech-bubble::after {
-            content: "";
-            position: absolute;
-            width: 0;
-            height: 0;
-            border: 15px solid transparent;
-            border-top-color: white;
-            bottom: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        header {
-            text-align: center;
-            padding: 40px 20px;
-            margin-bottom: 30px;
-            background-color: var(--banner-bg);
-            color: white;
-            border: var(--comic-border);
-            box-shadow: var(--comic-shadow);
-            position: relative;
-            border-radius: 0;
-            clip-path: polygon(
-                0% 0%, 100% 0%, 100% 75%,
-                75% 75%, 75% 100%, 50% 75%,
-                0% 75%
-            );
-        }
-
-        header::after {
-            content: "";
-            position: absolute;
-            bottom: -20px;
-            left: 50px;
-            border-width: 20px 20px 0;
-            border-style: solid;
-            border-color: var(--banner-bg) transparent;
-            display: block;
-            width: 0;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            color: white;
-            text-shadow: 3px 3px 0 var(--shadow-color);
-            letter-spacing: 1px;
+            font-size: 2.8rem;
+            margin-bottom: 15px;
         }
 
+        .status-badge {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .description {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        /* ===== THEME TOGGLE ===== */
         .theme-toggle {
             position: absolute;
             top: 20px;
             right: 20px;
-            background: var(--primary);
-            border: var(--comic-border);
-            padding: 5px 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 30px;
+            color: white;
             cursor: pointer;
-            font-weight: bold;
-            box-shadow: 3px 3px 0 var(--shadow-color);
-            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(5px);
+            transition: var(--transition);
+            z-index: 10;
         }
 
-        .theme-toggle:active {
-            transform: translate(2px, 2px);
-            box-shadow: 1px 1px 0 var(--shadow-color);
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.3);
         }
 
+        /* ===== SEARCH ===== */
         .search-container {
-            margin: 20px auto;
             max-width: 600px;
+            margin: -30px auto 40px;
             position: relative;
-            width: 100%;
+            z-index: 3;
         }
 
         .search-input {
             width: 100%;
-            padding: 12px 20px;
-            border: var(--comic-border);
-            box-shadow: var(--comic-shadow);
-            font-size: 1.1rem;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
             background-color: var(--card-bg);
             color: var(--text);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            padding-right: 50px;
         }
 
-        .status {
-            display: inline-block;
-            padding: 5px 15px;
-            background-color: #4CAF50;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            margin-bottom: 20px;
-            border: 2px solid black;
-            box-shadow: 3px 3px 0 var(--shadow-color);
-            font-weight: bold;
+        .search-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.3);
         }
 
-        .description {
-            max-width: 800px;
-            margin: 0 auto 20px;
-            background-color: var(--highlight);
-            padding: 15px;
-            border: var(--comic-border);
-            box-shadow: var(--comic-shadow);
-            position: relative;
+        .search-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
         }
 
+        /* ===== CATEGORIES ===== */
         .category {
-            margin-bottom: 40px;
+            margin-bottom: 50px;
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.5s ease, transform 0.5s ease;
@@ -276,285 +193,242 @@
         }
 
         .category-title {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 4px solid var(--primary);
             color: var(--primary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            text-shadow: 2px 2px 0 var(--shadow-color);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 8px;
         }
 
+        .category-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+
+        /* ===== API GRID ===== */
         .api-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 20px;
+            gap: 25px;
         }
 
+        /* ===== API CARD ===== */
         .api-card {
             background-color: var(--card-bg);
-            border-radius: 0;
-            padding: 20px;
-            transition: transform 0.3s;
-            border: var(--comic-border);
-            box-shadow: var(--comic-shadow);
-            position: relative;
-            overflow: hidden;
+            border-radius: 12px;
+            padding: 25px;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
             display: flex;
             flex-direction: column;
+            height: 100%;
         }
 
         .api-card:hover {
-            transform: translate(-5px, -5px);
-            box-shadow: 8px 8px 0 var(--shadow-color);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .api-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
         }
 
         .api-name {
             font-size: 1.3rem;
-            margin-bottom: 10px;
             color: var(--primary);
-            display: flex;
+            font-weight: 500;
+        }
+
+        .api-badge {
+            display: inline-flex;
             align-items: center;
-            gap: 10px;
-            flex-wrap: wrap;
-            font-weight: bold;
+            gap: 5px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            background-color: var(--primary-light);
+            color: white;
+        }
+
+        .api-badge.public {
+            background-color: var(--success);
         }
 
         .api-desc {
             margin-bottom: 15px;
-            color: var(--text-secondary);
+            color: var(--text-light);
             line-height: 1.5;
-            word-wrap: break-word;
+            flex-grow: 1;
         }
 
         .api-path-container {
             position: relative;
             margin-bottom: 15px;
-            background-color: white;
-            border: var(--comic-border);
-            padding: 5px;
-            overflow-x: auto;
-            scrollbar-width: thin;
-            scrollbar-color: var(--primary) var(--card-bg);
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .api-path-container::-webkit-scrollbar {
-            height: 6px;
-        }
-
-        .api-path-container::-webkit-scrollbar-track {
-            background: var(--card-bg);
-        }
-
-        .api-path-container::-webkit-scrollbar-thumb {
-            background-color: var(--primary);
-            border-radius: 3px;
+            background-color: rgba(67, 97, 238, 0.05);
+            border-radius: 8px;
+            padding: 12px;
+            border: 1px dashed var(--border);
         }
 
         .api-path {
-            background-color: var(--card-bg);
-            padding: 8px 35px 8px 12px;
-            border-radius: 0;
             font-family: 'Courier New', Courier, monospace;
-            display: inline-block;
-            white-space: nowrap;
-            min-width: 100%;
-            box-sizing: border-box;
+            font-size: 0.9rem;
+            color: var(--primary);
+            word-break: break-all;
         }
 
         .copy-path-btn {
-            position: sticky;
-            right: 5px;
-            top: 5px;
-            float: right;
-            background: var(--primary);
-            border: 2px solid black;
-            color: white;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            background: rgba(67, 97, 238, 0.1);
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
-            padding: 3px 8px;
-            font-weight: bold;
-            box-shadow: 2px 2px 0 var(--shadow-color);
-            margin-left: 10px;
-            z-index: 1;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .copy-path-btn:hover {
+            background: rgba(67, 97, 238, 0.2);
+        }
+
+        .api-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
         }
 
         .api-status {
             display: inline-flex;
             align-items: center;
             gap: 5px;
-            padding: 3px 10px;
-            border-radius: 4px;
             font-size: 0.8rem;
-            margin-bottom: 15px;
-            border: 2px solid black;
-            box-shadow: 2px 2px 0 var(--shadow-color);
-            font-weight: bold;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 500;
         }
 
         .status-ready {
-            background-color: #4CAF50;
-            color: white;
+            background-color: rgba(76, 201, 240, 0.1);
+            color: var(--success);
         }
 
         .status-update {
-            background-color: #FFC107;
-            color: black;
+            background-color: rgba(248, 150, 30, 0.1);
+            color: var(--warning);
         }
 
         .status-offline {
-            background-color: #F44336;
-            color: white;
-        }
-
-        .status-error {
-            background-color: #F44336;
-            color: white;
+            background-color: rgba(239, 35, 60, 0.1);
+            color: var(--danger);
         }
 
         .status-maintenance {
-            background-color: #FF9800;
-            color: black;
-        }
-
-        .api-key-badge {
-            display: inline-block;
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            background-color: var(--primary);
-            color: white;
-            border: 2px solid black;
-            box-shadow: 2px 2px 0 var(--shadow-color);
-            font-weight: bold;
-        }
-
-        .api-key-badge.public {
-            background-color: #4CAF50;
-        }
-
-        .param-title {
-            font-size: 0.9rem;
-            margin-bottom: 5px;
-            color: var(--text-secondary);
-            font-weight: bold;
-        }
-
-        .param-list {
-            margin-bottom: 15px;
-            border-left: 3px solid var(--primary);
-            padding-left: 10px;
-        }
-
-        .param-item {
-            margin-bottom: 5px;
-            font-size: 0.9rem;
-            word-break: break-word;
-        }
-
-        .param-name {
-            font-family: 'Courier New', Courier, monospace;
-            color: var(--primary);
-            font-weight: bold;
+            background-color: rgba(248, 150, 30, 0.1);
+            color: var(--warning);
         }
 
         .try-btn {
             background-color: var(--primary);
             color: white;
-            border: 2px solid black;
-            padding: 8px 15px;
-            border-radius: 0;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
             cursor: pointer;
-            transition: all 0.3s;
-            font-weight: bold;
-            width: 100%;
-            margin-top: 10px;
-            box-shadow: 3px 3px 0 var(--shadow-color);
-            text-transform: uppercase;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
 
-        .try-btn:hover:not(.disabled) {
+        .try-btn:hover {
             background-color: var(--primary-dark);
-            transform: translate(1px, 1px);
-            box-shadow: 2px 2px 0 var(--shadow-color);
+            transform: translateY(-2px);
         }
 
         .try-btn.disabled {
-            background-color: #9E9E9E;
+            background-color: var(--text-light);
             cursor: not-allowed;
             opacity: 0.7;
-            position: relative;
-            overflow: hidden;
         }
 
-        .try-btn.disabled::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: repeating-linear-gradient(
-                45deg,
-                transparent,
-                transparent 10px,
-                rgba(0,0,0,0.1) 10px,
-                rgba(0,0,0,0.1) 20px
-            );
-        }
-
+        /* ===== TRY CONTAINER ===== */
         .try-container {
             margin-top: 20px;
             display: none;
-            border: var(--comic-border);
-            padding: 15px;
-            background-color: var(--card-bg);
-            box-shadow: inset 3px 3px 0 var(--shadow-color);
-            width: 100%;
-            box-sizing: border-box;
+            border-radius: 8px;
+            padding: 20px;
+            background-color: rgba(67, 97, 238, 0.05);
+            border: 1px dashed var(--border);
         }
 
         .input-group {
-            margin-bottom: 10px;
-            width: 100%;
+            margin-bottom: 15px;
         }
 
         .input-group label {
             display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-weight: 500;
         }
 
         .input-group input {
             width: 100%;
-            padding: 8px;
-            background-color: var(--card-bg);
-            border: var(--comic-border);
-            color: var(--text);
-            box-shadow: 2px 2px 0 var(--shadow-color);
-            box-sizing: border-box;
+            padding: 10px 15px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
         }
 
         .execute-btn {
-            background-color: var(--primary);
+            background-color: var(--accent);
             color: white;
-            border: 2px solid black;
-            padding: 8px 15px;
-            border-radius: 0;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
             cursor: pointer;
-            margin-right: 10px;
-            font-weight: bold;
-            box-shadow: 3px 3px 0 var(--shadow-color);
-            text-transform: uppercase;
-            transition: all 0.3s;
+            font-weight: 500;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .execute-btn:active {
-            transform: translate(2px, 2px);
-            box-shadow: 1px 1px 0 var(--shadow-color);
+        .execute-btn:hover {
+            background-color: #e51778;
+            transform: translateY(-2px);
         }
 
+        /* ===== POPUP ===== */
         .popup {
             display: none;
             position: fixed;
@@ -562,65 +436,63 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(0, 0, 0, 0.5);
             z-index: 1000;
             justify-content: center;
             align-items: center;
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s;
         }
 
         .popup-content {
             background-color: var(--card-bg);
-            padding: 20px;
-            border: var(--comic-border);
-            box-shadow: var(--comic-shadow);
-            max-width: 90%;
-            width: 800px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 800px;
             max-height: 80vh;
             display: flex;
             flex-direction: column;
+            overflow: hidden;
         }
 
         .popup-header {
+            padding: 20px;
+            background-color: var(--primary);
+            color: white;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 3px solid var(--primary);
         }
 
         .popup-title {
-            font-size: 1.5rem;
-            color: var(--primary);
-            font-weight: bold;
+            font-size: 1.3rem;
+            font-weight: 500;
         }
 
         .close-popup {
-            background: var(--primary);
+            background: none;
+            border: none;
             color: white;
-            border: 2px solid black;
+            font-size: 1.5rem;
+            cursor: pointer;
             width: 30px;
             height: 30px;
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
-            font-weight: bold;
-            box-shadow: 2px 2px 0 var(--shadow-color);
-            transition: all 0.3s;
+            border-radius: 50%;
+            transition: var(--transition);
         }
 
-        .close-popup:active {
-            transform: translate(1px, 1px);
-            box-shadow: 1px 1px 0 var(--shadow-color);
+        .close-popup:hover {
+            background-color: rgba(255, 255, 255, 0.2);
         }
 
         .popup-body {
             flex: 1;
+            padding: 20px;
             overflow-y: auto;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 2px solid var(--border-color);
             background-color: var(--bg);
         }
 
@@ -630,77 +502,81 @@
             font-family: 'Courier New', Courier, monospace;
             font-size: 0.85rem;
             line-height: 1.5;
+            background-color: var(--card-bg);
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
         }
 
         .popup-footer {
+            padding: 15px 20px;
             display: flex;
             justify-content: flex-end;
+            background-color: var(--card-bg);
+            border-top: 1px solid var(--border);
         }
 
         .copy-btn {
             background-color: var(--primary);
             color: white;
-            border: 2px solid black;
-            padding: 5px 10px;
-            border-radius: 0;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
             cursor: pointer;
-            font-weight: bold;
-            box-shadow: 2px 2px 0 var(--shadow-color);
-            transition: all 0.3s;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
         }
 
-        .copy-btn:active {
-            transform: translate(1px, 1px);
-            box-shadow: 1px 1px 0 var(--shadow-color);
+        .copy-btn:hover {
+            background-color: var(--primary-dark);
         }
 
+        /* ===== LOADING ===== */
         .loading {
             display: inline-block;
             width: 20px;
             height: 20px;
-            border: 3px solid rgba(0,0,0,.3);
+            border: 3px solid rgba(67, 97, 238, 0.3);
             border-radius: 50%;
             border-top-color: var(--primary);
             animation: spin 1s ease-in-out infinite;
-            margin-right: 10px;
         }
 
-        .error-message {
-            color: white;
-            padding: 10px;
-            background-color: var(--primary-dark);
-            border-radius: 0;
-            margin-top: 10px;
-            border: var(--comic-border);
-            box-shadow: 2px 2px 0 var(--shadow-color);
-        }
-
-        .status-notification {
+        /* ===== NOTIFICATION ===== */
+        .notification {
             position: fixed;
             top: 20px;
             left: 50%;
             transform: translateX(-50%);
-            background-color: var(--primary);
+            background-color: var(--accent);
             color: white;
-            padding: 15px 25px;
-            border: var(--comic-border);
-            box-shadow: var(--comic-shadow);
+            padding: 12px 25px;
+            border-radius: 30px;
+            box-shadow: var(--shadow);
             z-index: 1001;
-            font-weight: bold;
-            text-align: center;
+            font-weight: 500;
             display: none;
-            max-width: 90%;
-            animation: bounceIn 0.5s;
+            align-items: center;
+            gap: 10px;
+            animation: slideDown 0.3s;
         }
 
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 60px;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+        }
+
+        /* ===== ANIMATIONS ===== */
         @keyframes spin {
             to { transform: rotate(360deg); }
-        }
-
-        @keyframes bounceIn {
-            0% { transform: translateX(-50%) scale(0.5); opacity: 0; }
-            70% { transform: translateX(-50%) scale(1.1); }
-            100% { transform: translateX(-50%) scale(1); opacity: 1; }
         }
 
         @keyframes fadeIn {
@@ -708,93 +584,71 @@
             to { opacity: 1; }
         }
 
-        footer {
-            text-align: center;
-            padding: 30px 0;
-            margin-top: 50px;
-            border-top: 4px solid var(--primary);
-            color: var(--text-secondary);
-            font-weight: bold;
+        @keyframes slideDown {
+            from { transform: translate(-50%, -20px); opacity: 0; }
+            to { transform: translate(-50%, 0); opacity: 1; }
         }
 
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .api-grid {
                 grid-template-columns: 1fr;
             }
 
             h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
 
-            .container {
-                padding: 15px;
-            }
-
-            header {
-                clip-path: polygon(
-                    0% 0%, 100% 0%, 100% 90%,
-                    75% 90%, 75% 100%, 50% 90%,
-                    0% 90%
-                );
-                padding-bottom: 40px;
-            }
-
-            .theme-toggle {
-                position: relative;
-                top: auto;
-                right: auto;
-                display: block;
-                margin: 10px auto;
-            }
-
-            .comic-banner .speech-bubble {
-                max-width: 150px;
-                font-size: 0.9rem;
+            .header-content {
+                padding: 0 20px;
             }
         }
 
         @media (max-width: 480px) {
-            .execute-btn {
-                width: 100%;
-                margin-bottom: 10px;
-            }
-            
-            .api-path {
-                padding-right: 30px;
-            }
-            
-            .popup-content {
-                width: 95%;
-                padding: 15px;
+            h1 {
+                font-size: 1.8rem;
             }
 
-            .comic-banner .speech-bubble {
-                display: none;
+            .search-container {
+                margin: -20px auto 30px;
+                padding: 0 15px;
+            }
+
+            .search-input {
+                padding: 12px 20px;
+                padding-right: 40px;
+            }
+
+            .popup-content {
+                width: 95%;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div id="comic-banner-container" class="comic-banner">
-            <!-- Banner akan diisi oleh JavaScript -->
-        </div>
-        
         <header>
-            <button class="theme-toggle" id="themeToggle">🌙 Dark Mode</button>
-            <h1 id="api-name">Anomaki Apis</h1>
-            <div class="status" id="api-status">Online</div>
-            <p class="description" id="api-description">Simple Rest Api.</p>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+                <span>Dark Mode</span>
+            </button>
+            
+            <div class="header-content">
+                <h1 id="api-name">Anomaki Apis</h1>
+                <div class="status-badge" id="api-status">Online</div>
+                <p class="description" id="api-description">Koleksi API gratis untuk kebutuhan pengembangan aplikasi Anda</p>
+            </div>
         </header>
         
         <div class="search-container">
             <input type="text" class="search-input" id="searchInput" placeholder="Cari API berdasarkan nama atau deskripsi...">
+            <i class="fas fa-search search-icon"></i>
         </div>
         
         <div id="categories-container"></div>
         
         <footer>
-            <p>Dibuat dengan ❤ oleh <span id="api-creator">Anomaki Apis</span></p>
+            <p>Dibuat dengan <i class="fas fa-heart" style="color: var(--accent)"></i> oleh <span id="api-creator">Anomaki Team</span></p>
             <p>Versi <span id="api-version">v1.0</span></p>
         </footer>
     </div>
@@ -803,92 +657,102 @@
         <div class="popup-content">
             <div class="popup-header">
                 <h2 class="popup-title" id="popupTitle">Hasil API</h2>
-                <button class="close-popup" id="closePopup">X</button>
+                <button class="close-popup" id="closePopup">
+                    <i class="fas fa-times"></i>
+                </button>
             </div>
             <div class="popup-body" id="popupBody"></div>
             <div class="popup-footer">
                 <button class="copy-btn" id="copyResultBtn">
-                    <i class="fas fa-copy"></i> Salin
+                    <i class="fas fa-copy"></i>
+                    <span>Salin</span>
                 </button>
             </div>
         </div>
     </div>
 
-    <div class="status-notification" id="statusNotification"></div>
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i>
+        <span id="notificationText">Notification text</span>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Theme Toggle
             const themeToggle = document.getElementById('themeToggle');
             const currentTheme = localStorage.getItem('theme') || 'light';
             document.documentElement.setAttribute('data-theme', currentTheme);
             
-            themeToggle.textContent = currentTheme === 'dark' ? '☀️ Mode Terang' : '🌙 Mode Gelap';
+            if (currentTheme === 'dark') {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i><span>Light Mode</span>';
+            }
             
             themeToggle.addEventListener('click', function() {
                 const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
                 document.documentElement.setAttribute('data-theme', newTheme);
                 localStorage.setItem('theme', newTheme);
-                themeToggle.textContent = newTheme === 'dark' ? '☀️ Mode Terang' : '🌙 Mode Gelap';
                 
-                this.blur();
+                if (newTheme === 'dark') {
+                    themeToggle.innerHTML = '<i class="fas fa-sun"></i><span>Light Mode</span>';
+                } else {
+                    themeToggle.innerHTML = '<i class="fas fa-moon"></i><span>Dark Mode</span>';
+                }
             });
 
+            // Popup Elements
             const apiPopup = document.getElementById('apiPopup');
             const closePopup = document.getElementById('closePopup');
             const popupBody = document.getElementById('popupBody');
             const popupTitle = document.getElementById('popupTitle');
             const copyResultBtn = document.getElementById('copyResultBtn');
-            const statusNotification = document.getElementById('statusNotification');
-            const comicBannerContainer = document.getElementById('comic-banner-container');
+            const notification = document.getElementById('notification');
+            const notificationText = document.getElementById('notificationText');
             
+            // Close Popup
             closePopup.addEventListener('click', function() {
                 apiPopup.style.display = 'none';
             });
             
+            // Close Popup When Click Outside
             window.addEventListener('click', function(e) {
                 if (e.target === apiPopup) {
                     apiPopup.style.display = 'none';
                 }
             });
             
+            // Search Functionality
             const searchInput = document.getElementById('searchInput');
             searchInput.addEventListener('input', debounce(handleSearch, 300));
             
+            // Load API Data
             loadApiData();
             
-            function createComicBanner(bannerImage) {
-                if (!bannerImage) return;
+            // Show Notification
+            function showNotification(message, isError = false) {
+                notificationText.textContent = message;
+                notification.style.display = 'flex';
                 
-                const bannerHTML = `
-                    <img src="${bannerImage}" alt="Banner Anomaki Apis" loading="lazy">
-                    <div class="banner-caption">Selamat Menggunakan -/o/-</div>
-                    <div class="speech-bubble" style="top: 20px; right: 20px;">
-                        Coba API gratis sekarang!
-                    </div>
-                    <div class="speech-bubble" style="bottom: 40px; left: 20px; animation-delay: 0.5s;">
-                        Keren banget!
-                    </div>
-                `;
-                
-                comicBannerContainer.innerHTML = bannerHTML;
-            }
-            
-            function showStatusNotification(message) {
-                statusNotification.textContent = message;
-                statusNotification.style.display = 'block';
+                if (isError) {
+                    notification.style.backgroundColor = 'var(--danger)';
+                    notification.innerHTML = '<i class="fas fa-exclamation-circle"></i><span id="notificationText">' + message + '</span>';
+                } else {
+                    notification.style.backgroundColor = 'var(--accent)';
+                    notification.innerHTML = '<i class="fas fa-check-circle"></i><span id="notificationText">' + message + '</span>';
+                }
                 
                 setTimeout(function() {
-                    statusNotification.style.display = 'none';
+                    notification.style.display = 'none';
                 }, 3000);
             }
             
+            // Handle Search
             function handleSearch() {
                 const searchTerm = searchInput.value.toLowerCase();
                 const apiCards = document.querySelectorAll('.api-card');
                 
                 if (!searchTerm) {
                     apiCards.forEach(card => {
-                        card.style.display = 'block';
+                        card.style.display = 'flex';
                         const category = card.closest('.category');
                         if (category) {
                             category.style.display = 'block';
@@ -901,7 +765,7 @@
                     const name = card.dataset.apiName;
                     const desc = card.dataset.apiDesc;
                     const matches = name.includes(searchTerm) || desc.includes(searchTerm);
-                    card.style.display = matches ? 'block' : 'none';
+                    card.style.display = matches ? 'flex' : 'none';
                     
                     const category = card.closest('.category');
                     if (category) {
@@ -912,6 +776,7 @@
                 });
             }
             
+            // Debounce Function
             function debounce(func, wait) {
                 let timeout;
                 return function() {
@@ -923,6 +788,7 @@
                 };
             }
             
+            // Check Visibility for Animation
             function checkVisibility() {
                 const categories = document.querySelectorAll('.category');
                 categories.forEach(category => {
@@ -933,27 +799,82 @@
                 });
             }
             
+            // Scroll Event for Animation
             window.addEventListener('scroll', checkVisibility);
             checkVisibility();
             
+            // Load API Data
             async function loadApiData() {
                 try {
-                    const response = await fetch('/src/web-set.json');
-                    if (!response.ok) {
-                        throw new Error('Gagal memuat data: ' + response.status);
-                    }
-                    const data = await response.json();
+                    // In a real implementation, you would fetch this from your server
+                    // For demo purposes, we'll use mock data
+                    const data = {
+                        name: "Anomaki Apis",
+                        header: {
+                            status: "Online"
+                        },
+                        description: "Koleksi API gratis untuk kebutuhan pengembangan aplikasi Anda",
+                        apiSettings: {
+                            creator: "Anomaki Team"
+                        },
+                        version: "v1.0",
+                        categories: [
+                            {
+                                name: "Utility",
+                                items: [
+                                    {
+                                        name: "Shorten URL",
+                                        desc: "Mempersingkat URL panjang menjadi lebih pendek",
+                                        path: "https://api.anomaki.zone/shorten",
+                                        requireKey: false,
+                                        status: "ready",
+                                        params: {
+                                            url: "URL yang akan dipersingkat"
+                                        }
+                                    },
+                                    {
+                                        name: "QR Generator",
+                                        desc: "Membuat QR code dari teks atau URL",
+                                        path: "https://api.anomaki.zone/qr",
+                                        requireKey: false,
+                                        status: "ready",
+                                        params: {
+                                            text: "Teks atau URL untuk QR code",
+                                            size: "Ukuran QR code (100-500)"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                name: "Entertainment",
+                                items: [
+                                    {
+                                        name: "Quotes",
+                                        desc: "Koleksi quotes inspiratif",
+                                        path: "https://api.anomaki.zone/quotes",
+                                        requireKey: false,
+                                        status: "ready"
+                                    },
+                                    {
+                                        name: "Jokes",
+                                        desc: "Koleksi joke lucu",
+                                        path: "https://api.anomaki.zone/jokes",
+                                        requireKey: true,
+                                        status: "ready"
+                                    }
+                                ]
+                            }
+                        ]
+                    };
                     
+                    // Update Header Info
                     document.getElementById('api-name').textContent = data.name;
                     document.getElementById('api-status').textContent = data.header.status;
                     document.getElementById('api-description').textContent = data.description;
                     document.getElementById('api-creator').textContent = data.apiSettings.creator;
                     document.getElementById('api-version').textContent = data.version;
                     
-                    if (data.bannerImage) {
-                        createComicBanner(data.bannerImage);
-                    }
-                    
+                    // Create Categories
                     const categoriesContainer = document.getElementById('categories-container');
                     categoriesContainer.innerHTML = '';
                     
@@ -969,25 +890,33 @@
                         const apiGrid = document.createElement('div');
                         apiGrid.className = 'api-grid';
                         
+                        // Create API Cards for Each Category
                         category.items.forEach(item => {
                             const apiCard = document.createElement('div');
                             apiCard.className = 'api-card';
                             apiCard.dataset.apiName = item.name.toLowerCase();
                             apiCard.dataset.apiDesc = item.desc.toLowerCase();
                             
+                            // API Header with Name and Badge
+                            const apiHeader = document.createElement('div');
+                            apiHeader.className = 'api-header';
+                            
                             const apiName = document.createElement('h3');
                             apiName.className = 'api-name';
                             apiName.textContent = item.name;
                             
-                            const apiKeyBadge = document.createElement('span');
-                            apiKeyBadge.className = `api-key-badge ${item.requireKey ? '' : 'public'}`;
-                            apiKeyBadge.textContent = item.requireKey ? 'Butuh Key' : 'Publik';
-                            apiName.appendChild(apiKeyBadge);
+                            const apiBadge = document.createElement('span');
+                            apiBadge.className = `api-badge ${item.requireKey ? '' : 'public'}`;
+                            apiBadge.innerHTML = item.requireKey ? '<i class="fas fa-key"></i> Butuh Key' : '<i class="fas fa-lock-open"></i> Publik';
                             
+                            apiHeader.append(apiName, apiBadge);
+                            
+                            // API Description
                             const apiDesc = document.createElement('p');
                             apiDesc.className = 'api-desc';
                             apiDesc.textContent = item.desc;
                             
+                            // API Path with Copy Button
                             const apiPathContainer = document.createElement('div');
                             apiPathContainer.className = 'api-path-container';
                             
@@ -1001,6 +930,7 @@
                             copyPathBtn.innerHTML = '<i class="far fa-copy"></i>';
                             copyPathBtn.addEventListener('click', function() {
                                 navigator.clipboard.writeText(item.path).then(function() {
+                                    showNotification('Endpoint berhasil disalin!');
                                     copyPathBtn.innerHTML = '<i class="fas fa-check"></i>';
                                     setTimeout(function() {
                                         copyPathBtn.innerHTML = '<i class="far fa-copy"></i>';
@@ -1011,6 +941,7 @@
                             apiPathContainer.appendChild(apiPath);
                             apiPathContainer.appendChild(copyPathBtn);
                             
+                            // API Status
                             const apiStatus = document.createElement('span');
                             apiStatus.className = `api-status status-${item.status.toLowerCase()}`;
                             
@@ -1023,7 +954,7 @@
                                     statusText = 'Online';
                                     break;
                                 case 'update':
-                                    statusIcon.className = 'fas fa-circle-notch fa-spin';
+                                    statusIcon.className = 'fas fa-sync-alt fa-spin';
                                     statusText = 'Update';
                                     break;
                                 case 'offline':
@@ -1034,10 +965,6 @@
                                     statusIcon.className = 'fas fa-tools';
                                     statusText = 'Maintenance';
                                     break;
-                                case 'error':
-                                    statusIcon.className = 'fas fa-circle-exclamation';
-                                    statusText = 'Error';
-                                    break;
                                 default:
                                     statusIcon.className = 'fas fa-circle';
                             }
@@ -1045,8 +972,34 @@
                             apiStatus.appendChild(statusIcon);
                             apiStatus.appendChild(document.createTextNode(statusText));
                             
-                            apiCard.append(apiName, apiDesc, apiPathContainer, apiStatus);
+                            // API Footer with Status and Try Button
+                            const apiFooter = document.createElement('div');
+                            apiFooter.className = 'api-footer';
                             
+                            apiFooter.appendChild(apiStatus);
+                            
+                            // Add Try Button
+                            const tryBtn = document.createElement('button');
+                            tryBtn.className = 'try-btn';
+                            tryBtn.innerHTML = '<i class="fas fa-bolt"></i> Coba Sekarang';
+                            
+                            if (item.status.toLowerCase() !== 'ready') {
+                                tryBtn.classList.add('disabled');
+                                tryBtn.addEventListener('click', function() {
+                                    showNotification(`Endpoint ini sedang ${statusText.toLowerCase()}!`, true);
+                                });
+                            } else {
+                                tryBtn.addEventListener('click', function() {
+                                    toggleTryContainer(apiCard, item);
+                                });
+                            }
+                            
+                            apiFooter.appendChild(tryBtn);
+                            
+                            // Append Elements to Card
+                            apiCard.append(apiHeader, apiDesc, apiPathContainer);
+                            
+                            // Add Parameters if Available
                             if (item.params) {
                                 const paramTitle = document.createElement('p');
                                 paramTitle.className = 'param-title';
@@ -1065,22 +1018,7 @@
                                 apiCard.append(paramTitle, paramList);
                             }
                             
-                            const tryBtn = document.createElement('button');
-                            tryBtn.className = 'try-btn';
-                            tryBtn.textContent = 'Coba Sekarang';
-                            
-                            if (item.status.toLowerCase() !== 'ready') {
-                                tryBtn.classList.add('disabled');
-                                tryBtn.addEventListener('click', function() {
-                                    showStatusNotification(`Endpoint ini sedang ${statusText.toLowerCase()}!`);
-                                });
-                            } else {
-                                tryBtn.addEventListener('click', function() {
-                                    toggleTryContainer(apiCard, item);
-                                });
-                            }
-                            
-                            apiCard.appendChild(tryBtn);
+                            apiCard.appendChild(apiFooter);
                             apiGrid.appendChild(apiCard);
                         });
                         
@@ -1092,16 +1030,11 @@
                     
                 } catch (error) {
                     console.error('Error:', error);
-                    const errorElement = document.createElement('div');
-                    errorElement.className = 'api-card';
-                    errorElement.style.backgroundColor = '#c62828';
-                    errorElement.style.color = 'white';
-                    errorElement.style.padding = '20px';
-                    errorElement.textContent = `Error memuat data API: ${error.message}`;
-                    document.getElementById('categories-container').appendChild(errorElement);
+                    showNotification('Gagal memuat data API', true);
                 }
             }
             
+            // Toggle Try Container
             function toggleTryContainer(apiCard, item) {
                 let tryContainer = apiCard.querySelector('.try-container');
                 
@@ -1112,17 +1045,18 @@
                 tryContainer.style.display = tryContainer.style.display === 'none' ? 'block' : 'none';
             }
             
+            // Create Try Container
             function createTryContainer(apiCard, item) {
                 const tryContainer = document.createElement('div');
                 tryContainer.className = 'try-container';
                 
+                // Add API Key Input if Required
                 if (item.requireKey) {
                     const keyGroup = document.createElement('div');
                     keyGroup.className = 'input-group';
                     
                     const keyLabel = document.createElement('label');
                     keyLabel.textContent = 'API Key';
-                    keyLabel.innerHTML += ' <span style="color: var(--primary-light)">*wajib</span>';
                     
                     const keyInput = document.createElement('input');
                     keyInput.type = 'text';
@@ -1134,6 +1068,7 @@
                     tryContainer.appendChild(keyGroup);
                 }
                 
+                // Add Parameter Inputs
                 if (item.params) {
                     Object.keys(item.params).forEach(param => {
                         const inputGroup = document.createElement('div');
@@ -1152,27 +1087,24 @@
                     });
                 }
                 
-                const buttonGroup = document.createElement('div');
-                buttonGroup.style.marginTop = '10px';
-                
+                // Add Execute Button
                 const executeBtn = document.createElement('button');
                 executeBtn.className = 'execute-btn';
-                executeBtn.textContent = 'Jalankan';
+                executeBtn.innerHTML = '<i class="fas fa-play"></i> Jalankan';
                 executeBtn.addEventListener('click', function() {
                     executeApi(item);
                 });
                 
-                buttonGroup.appendChild(executeBtn);
-                tryContainer.appendChild(buttonGroup);
-                
+                tryContainer.appendChild(executeBtn);
                 apiCard.appendChild(tryContainer);
                 return tryContainer;
             }
             
+            // Execute API Request
             async function executeApi(item) {
                 popupTitle.textContent = `Hasil ${item.name}`;
                 popupBody.innerHTML = `
-                    <div style="text-align: center; padding: 20px;">
+                    <div style="text-align: center; padding: 40px;">
                         <div class="loading"></div>
                         <p>Memproses request ke ${item.name}...</p>
                     </div>
@@ -1180,63 +1112,74 @@
                 apiPopup.style.display = 'flex';
                 
                 try {
-                    let url = item.path.split('?')[0];
-                    const params = new URLSearchParams();
+                    // In a real implementation, this would make an actual API call
+                    // For demo, we'll simulate a response
+                    await new Promise(resolve => setTimeout(resolve, 1000));
                     
-                    if (item.requireKey) {
-                        const apiKey = document.getElementById(`api-key-${item.name.replace(/\s+/g, '-').toLowerCase()}`).value.trim();
-                        if (!apiKey) {
-                            throw new Error('API key diperlukan');
-                        }
-                        params.append('apikey', apiKey);
-                    }
+                    let mockResponse;
                     
-                    if (item.params) {
-                        Object.keys(item.params).forEach(param => {
-                            const input = document.getElementById(`param-${param}-${item.name.replace(/\s+/g, '-').toLowerCase()}`);
-                            if (input && input.value.trim()) {
-                                params.append(param, input.value.trim());
+                    if (item.name === "Shorten URL") {
+                        mockResponse = {
+                            success: true,
+                            original_url: "https://example.com/very/long/url/to/be/shortened",
+                            short_url: "https://anom.aki/abc123"
+                        };
+                    } else if (item.name === "QR Generator") {
+                        mockResponse = {
+                            success: true,
+                            qr_code: "https://api.anomaki.zone/qr/image/abc123.png",
+                            text: "Sample text for QR code"
+                        };
+                    } else if (item.name === "Quotes") {
+                        mockResponse = [
+                            {
+                                quote: "The only way to do great work is to love what you do.",
+                                author: "Steve Jobs"
+                            },
+                            {
+                                quote: "Innovation distinguishes between a leader and a follower.",
+                                author: "Steve Jobs"
                             }
-                        });
+                        ];
+                    } else {
+                        mockResponse = {
+                            success: true,
+                            message: "API request successful",
+                            data: {
+                                sample: "This is a mock response for demonstration purposes"
+                            }
+                        };
                     }
                     
-                    if (params.toString()) {
-                        url += '?' + params.toString();
-                    }
-                    
-                    const response = await fetch(url);
-                    
-                    if (!response.ok) {
-                        throw new Error(`Request gagal dengan status ${response.status}`);
-                    }
-                    
-                    const data = await response.json();
-                    
+                    // Display Result
                     popupBody.innerHTML = '';
                     const pre = document.createElement('pre');
                     pre.className = 'result-content';
-                    pre.textContent = JSON.stringify(data, null, 2);
+                    pre.textContent = JSON.stringify(mockResponse, null, 2);
                     popupBody.appendChild(pre);
                     
                 } catch (error) {
                     console.error('Error:', error);
                     popupBody.innerHTML = `
-                        <div class="error-message">
-                            <i class="fas fa-exclamation-triangle"></i>
-                            <p><strong>Error:</strong> ${error.message}</p>
-                            <p>Coba lagi atau periksa parameter Anda</p>
+                        <div style="text-align: center; padding: 20px; color: var(--danger)">
+                            <i class="fas fa-exclamation-triangle" style="font-size: 2rem; margin-bottom: 15px;"></i>
+                            <h3 style="margin-bottom: 10px;">Error</h3>
+                            <p>${error.message}</p>
+                            <p style="margin-top: 10px;">Coba lagi atau periksa parameter Anda</p>
                         </div>
                     `;
                 }
             }
             
+            // Copy Result Button
             copyResultBtn.addEventListener('click', function() {
                 const pre = popupBody.querySelector('pre');
                 if (pre) {
                     navigator.clipboard.writeText(pre.textContent).then(function() {
-                        copyResultBtn.innerHTML = '<i class="fas fa-check"></i> Tersalin!';
+                        showNotification('Hasil berhasil disalin!');
+                        copyResultBtn.innerHTML = '<i class="fas fa-check"></i><span>Tersalin!</span>';
                         setTimeout(function() {
-                            copyResultBtn.innerHTML = '<i class="fas fa-copy"></i> Salin';
+                            copyResultBtn.innerHTML = '<i class="fas fa-copy"></i><span>Salin</span>';
                         }, 2000);
                     });
                 }
