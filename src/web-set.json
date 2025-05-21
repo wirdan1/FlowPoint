@@ -57,11 +57,21 @@
           "status": "ready",
           "requireKey": true,
           "params": {
-            "code": "masukkan codemu"
+            "url": "masukkan url"
+          }
+        },
+        {
+          "name": "Douyin",
+          "desc": "Download douyin",
+          "path": "/downloader/douyin?url=",
+          "status": "ready",
+          "requireKey": true,
+          "params": {
+            "url": "masukkan codemu"
           }
         }
       ]
-    }
+    },
     {
       "name": "Tools",
       "items": [
