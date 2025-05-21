@@ -96,9 +96,6 @@
           "path": "/random/anime",
           "status": "ready",
           "requireKey": false,
-          "params": {
-            "code": "masukkan codemu"
-          }
         }
       ]
     }
