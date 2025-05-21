@@ -8,7 +8,7 @@
   },
   "apiSettings": {
     "creator": "Hookrest - Danz",
-    "globalKey": ["yo"],
+    "globalKey": ["daNz"],
     "defaultRequireKey": true
   },
   "categories": [
@@ -19,7 +19,7 @@
           "name": "Film Finder AI",
           "desc": "Temukan film berdasarkan kriteria tertentu",
           "path": "/search/filmfinder?q=",
-          "status": "maintenance",
+          "status": "ready",
           "requireKey": false,
           "params": {
             "q": "Jenis film yang dicari (contoh: film horror tahun 90an)"
@@ -28,8 +28,8 @@
         {
           "name": "Douyin Search",
           "desc": "Temukan Douyinmu Berdasarkan Kriteria",
-          "path": "/search/douyinsearch?q=",
-          "status": "maintenance",
+          "path": "/search/douyin?q=",
+          "status": "ready",
           "requireKey": false,
           "params": {
             "q": "Masukkan Query yang ingin dicari"
@@ -54,7 +54,7 @@
           "name": "Beuty Javascript Code",
           "desc": "Rapikan dan bersihkan codemu",
           "path": "/tools/beautyjs?code=",
-          "status": "maintenance",
+          "status": "ready",
           "requireKey": false,
           "params": {
             "code": "masukkan codemu"
