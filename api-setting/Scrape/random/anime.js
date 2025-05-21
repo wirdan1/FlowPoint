@@ -1,17 +1,13 @@
 const axios = require('axios');
 
-async function getAnimeQuote() {
+async function getWaifu() {
   try {
-    const response = await axios.get('https://animechan.xyz/api/random');
-    return {
-      quote: response.data.quote,
-      character: response.data.character,
-      anime: response.data.anime
-    };
+    const response = await axios.get('https://api.waifu.pics/sfw/waifu');
+    return response.data.url;
   } catch (error) {
-    console.error('Gagal mengambil quote anime:', error.message);
+    console.error('Gagal mengambil gambar:', error);
     throw error;
   }
 }
 
-module.exports = getAnimeQuote;
+module.exports = getWaifu;
