@@ -39,7 +39,7 @@
           "name": "Youtube Search",
           "desc": "Temukan Dari Youtube",
           "path": "/search/ytsearch?query=",
-          "status": "maintenance",
+          "status": "ready",
           "requireKey": false,
           "params": {
             "query": "Masukkan Query yang ingin dicari"
