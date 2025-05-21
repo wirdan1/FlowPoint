@@ -48,6 +48,21 @@
       ]
     },
     {
+      "name": "Downloader",
+      "items": [
+        {
+          "name": "Douyin",
+          "desc": "Download tiktok china",
+          "path": "/downloader/douyin?url=",
+          "status": "ready",
+          "requireKey": true,
+          "params": {
+            "code": "masukkan codemu"
+          }
+        }
+      ]
+    }
+    {
       "name": "Tools",
       "items": [
         {
