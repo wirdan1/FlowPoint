@@ -1,44 +1,42 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 
-async function lirikSearch(query) {
+async function searchLyrics(query) {
   try {
-    // Search for lyrics
-    const { data } = await axios.get(`https://lirik.web.id/search/${encodeURIComponent(query)}`, {
+    const { data } = await axios.get(`https://lirik.web.id/?s=${encodeURIComponent(query)}`, {
       headers: {
-        'User-Agent': 'Mozilla/5.0'
-      }
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+      },
+      timeout: 5000
     });
 
     const $ = cheerio.load(data);
     const results = [];
 
-    // Extract search results
-    $('.search-results article').each((i, el) => {
-      const title = $(el).find('h2 a').text().trim();
-      const url = $(el).find('h2 a').attr('href');
-      results.push({ title, url });
-    });
-
-    // Get one top song from homepage
-    const homeData = await axios.get('https://lirik.web.id', {
-      headers: {
-        'User-Agent': 'Mozilla/5.0'
+    $('article, .search-result').each((i, el) => {
+      const title = $(el).find('h2 a, h3 a').first();
+      if (title.length) {
+        results.push({
+          title: title.text().trim(),
+          url: title.attr('href')
+        });
       }
+      if (results.length >= 5) return false; // Limit to 5 results
     });
-    const home$ = cheerio.load(homeData.data);
-    const topSong = {
-      title: home$('.popular-posts li:first-child a').text().trim(),
-      url: home$('.popular-posts li:first-child a').attr('href')
-    };
 
     return {
-      searchResults: results.slice(0, 5), // Limit to 5 results
-      topSong
+      status: true,
+      creator: "Your Name",
+      result: results
     };
   } catch (error) {
-    throw new Error(`Lirik search failed: ${error.message}`);
+    return {
+      status: false,
+      creator: "Your Name",
+      error: error.message,
+      result: []
+    };
   }
 }
 
-module.exports = lirikSearch;
+module.exports = searchLyrics;
