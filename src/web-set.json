@@ -104,6 +104,16 @@
           "params": {
             "code": "masukkan codemu"
           }
+        },
+        {
+          "name": "Lyrics",
+          "desc": "Rapikan dan bersihkan codemu",
+          "path": "/tools/lyrics?query=",
+          "status": "ready",
+          "requireKey": false,
+          "params": {
+            "query": "cari berdasarkan query"
+          }
         }
       ]
     },
