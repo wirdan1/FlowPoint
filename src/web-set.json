@@ -104,16 +104,6 @@
           "params": {
             "code": "masukkan codemu"
           }
-        },
-        {
-          "name": "Jarak",
-          "desc": "Ketahui jarak dari kota ke kota",
-          "path": "/tools/jarak?cityA=&cityB=",
-          "status": "ready",
-          "requireKey": false,
-          "params": {
-            "city": "cari berdasarkan kota"
-          }
         }
       ]
     },
