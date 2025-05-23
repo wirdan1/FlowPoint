@@ -26,16 +26,6 @@
           }
         },
         {
-          "name": "Douyin Search",
-          "desc": "Temukan Douyinmu Berdasarkan Kriteria",
-          "path": "/search/douyin?q=",
-          "status": "ready",
-          "requireKey": false,
-          "params": {
-            "q": "Masukkan Query yang ingin dicari"
-          }
-        },
-        {
           "name": "Youtube Search",
           "desc": "Temukan Dari Youtube",
           "path": "/search/ytsearch?query=",
@@ -78,16 +68,6 @@
           "requireKey": true,
           "params": {
             "url": "masukkan url"
-          }
-        },
-        {
-          "name": "Douyin",
-          "desc": "Download douyin",
-          "path": "/downloader/douyin?url=",
-          "status": "maintenance",
-          "requireKey": false,
-          "params": {
-            "url": "masukkan codemu"
           }
         }
       ]
