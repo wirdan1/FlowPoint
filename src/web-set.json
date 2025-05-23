@@ -106,13 +106,13 @@
           }
         },
         {
-          "name": "Lyrics",
-          "desc": "Rapikan dan bersihkan codemu",
-          "path": "/tools/lyrics?query=",
+          "name": "Jarak",
+          "desc": "Ketahui jarak dari kota ke kota",
+          "path": "/tools/jarak?cityA=&cityB=",
           "status": "ready",
           "requireKey": false,
           "params": {
-            "query": "cari berdasarkan query"
+            "city": "cari berdasarkan kota"
           }
         }
       ]
